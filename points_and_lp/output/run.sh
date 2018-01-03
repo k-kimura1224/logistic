@@ -50,12 +50,14 @@ run()
    buf=${1##*/}
    filename=${buf%.*}
 
-   ../bin/GENE_POINTS $1 5 > ./${filename}_5.lp
-   ../bin/GENE_POINTS $1 9 > ./${filename}_9.lp
+   ../bin/GENE_POINTS $1 5 > ./${filename}_05.lp
+   ../bin/GENE_POINTS $1 9 > ./${filename}_09.lp
    ../bin/GENE_POINTS $1 17 > ./${filename}_17.lp
 }
 
 datadir=$1
+
+rm -f *.lp
 
 for dir in `ls -d ${datadir}/*.logreg`
 do
