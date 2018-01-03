@@ -21,8 +21,8 @@ rm -f $txtname
 echo "generate $txtname"
 echo "set timelimit $time"
 echo "set timelimit $time" >> $txtname
-echo "set tolerances mipgap 1e-10"
-echo "set tolerances mipgap 1e-10" >> $txtname
+echo "set mip tolerances mipgap 1e-10"
+echo "set mip tolerances mipgap 1e-10" >> $txtname
 
 for file in `ls ${dirname}/*.lp`
 do
