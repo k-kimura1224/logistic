@@ -1,0 +1,11 @@
+src/cblas.h
+src/clapack.h
+check/
+check/results
+test_mac/
+.*.swp
+!settings/
+test*.sh
+check_*
+bin
+obj
