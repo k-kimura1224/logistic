@@ -45,14 +45,10 @@
 #include "clapack.h"
 #else
 #include <cblas.h>
-#ifdef __cpluscplus
 extern "C" {
-#endif
 int dposv_( char* uplo, int* n, int* nrhs, double* A,
       int* lda, double* x, int* ldb, int* info);
-#ifdef __cpluscplus
 }
-#endif
 #endif
 
 #include "call_cblas.h"
