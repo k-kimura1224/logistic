@@ -62,8 +62,7 @@ SEEDS=   0
 
 USRDIR		= $(PWD)
 USRLDFLAGS= -llapack -lblas
-# Link of BLAS and LAPACK for Waki
-#USRLDFLAGS= /home/waki9/lib/xianyi-OpenBLAS-aceee4e/libopenblas.a -lpthread
+#USRLDFLAGS=  -L/usr/lib64/libopenblas.so -lopenblas -llapack -lpthread
 #-----------------------------------------------------------------------------
 # Rules
 #-----------------------------------------------------------------------------
