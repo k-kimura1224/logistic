@@ -1,0 +1,5 @@
+                               Nodes    Active                                            
+     Time          Nodes        Left   Solvers     Best Integer        Best Node       Gap     Best Node(S)    Gap(S)
+*       0              0           1         1         678.4144                -         -                -         -
+*       0              3           2         2         676.4496         594.4144    13.80%         594.4144     13.80%
+*       0             10           4         4         675.4831         594.4496    13.63%         594.4496     13.63%

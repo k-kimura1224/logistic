@@ -8,7 +8,7 @@ LogSolvingStatus = TRUE
 OutputTabularSolvingStatus = TRUE
 OutputParaParams = 4
 
-TimeLimit = 3600
+TimeLimit = 5000
 
 # has to be FALSE for ramp-up = 0
 RacingStatBranching = FALSE
