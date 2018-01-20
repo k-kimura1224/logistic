@@ -15,12 +15,12 @@
 #include "reader_logreg.h"
 #include "probdata_logreg.h"
 #include "relax_newton.h"
+#include "heur_backward.h"
 //#include "matrix.h"
 //#include "vector.h"
 //#include "cblapack.h"
 //#include "linear_dependent.h"
 //#include "set_myparameter.h"
-//#include "heur_backward.h"
 //#include "heur_forward.h"
 //#include "branch_myfullstrong.h"
 //#include "branch_mostfreq.h"
@@ -158,7 +158,7 @@ SCIP_RETCODE runShell(
 	SCIP_CALL( SCIPincludeRelaxNewton(scip) );
 
 	///* include primal heuristics */
-	//SCIP_CALL( SCIPincludeHeurBackward(scip));
+	SCIP_CALL( SCIPincludeHeurBackward(scip));
 
 	///* include primal heuristics */
 	//SCIP_CALL( SCIPincludeHeurForward(scip));

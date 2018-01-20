@@ -1,5 +1,6 @@
 main.o: src/main.cpp src/reader_logreg.h src/probdata_logreg.h \
  src/relax_newton.h \
+ src/heur_backward.h \
  ../../src/scip/scip.h ../../src/scip/def.h \
  ../../src/scip/type_retcode.h ../../src/scip/pub_message.h \
  ../../src/scip/type_message.h ../../src/scip/struct_message.h \
@@ -1298,7 +1299,7 @@ convenient_tool.o: src/convenient_tool.cpp src/convenient_tool.h
 get_lineardependence.o: src/get_lineardependence.cpp src/get_lineardependence.h \
  src/convenient_tool.h \
  src/call_cblas.h
-call_cbals.o: src/call_cblas.cpp src/call_cblas.h
+call_cblas.o: src/call_cblas.cpp src/call_cblas.h
 relax_newton.o: src/relax_newton.cpp src/relax_newton.h \
  src/get_lineardependence.h \
  src/call_cblas.h \
@@ -1312,3 +1313,10 @@ logistic_regression.o: src/logistic_regression.cpp src/logistic_regression.h \
 stepsize.o: src/stepsize.cpp src/stepsize.h \
  src/call_cblas.h \
  src/logistic_regression.h
+heur_backward.o: src/heur_backward.cpp src/heur_backward.h \
+ src/probdata_logreg.h \
+ src/mysolpool.h \
+ src/logistic_regression.h \
+ src/stepsize.h \
+ src/call_cblas.h \
+ src/convenient_tool.h

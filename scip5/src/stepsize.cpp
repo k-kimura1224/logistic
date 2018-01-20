@@ -86,6 +86,12 @@ SCIP_Real   StepsizeMyrule(
          //return (SCIP_Real)-ct;
       }
 
+      if( alpha < 1.0e-06 )
+      {
+         SCIPfreeBufferArray(scip, &x_new);
+         SCIPfreeBufferArray(scip, &Xb);
+         return 0.0;
+      }
    }
 
    if( ct < 3 )

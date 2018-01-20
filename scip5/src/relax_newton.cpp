@@ -28,6 +28,7 @@
 #define RELAX_INCLUDESLP       TRUE
 
 #define debug                 0
+#define MP_WARM               true
 
 
 using namespace std;
@@ -392,7 +393,7 @@ SCIP_DECL_RELAXEXEC(relaxExecNewton)
       }
    }
 
-   /* calculate sub_branchinfo */
+   /* calculate sum_branchinfo */
    int   sum_branchinfo[3];
    SCIP_CALL( calcSumBranchinfo(scip, p1, p1 * 2, branchinfo, sum_branchinfo) );
 
@@ -451,7 +452,7 @@ SCIP_DECL_RELAXEXEC(relaxExecNewton)
    int info;
 
    SCIP_Real   lb;
-   //Solution*      mysol;
+   Solution*      mysol;
 
    // alloc
    SCIP_CALL( SCIPallocBufferArray(scip, &point, dimb));
@@ -459,120 +460,133 @@ SCIP_DECL_RELAXEXEC(relaxExecNewton)
    // newton method
    // step0: initialize {{
    //    generate initial point {
-//   if( root==0 && MP_WARM ){
-//      int *key;
-//      int n_key = pool->MySolPool_Nkey();
-//      int index;
-//
-//      // 1. search the relaxsol of the current node
-//      SCIP_CALL( SCIPallocBufferArray(scip, &key, n_key));
-//
-//      pool->MySolPool_genekey( solval_01, key);
-//      index = pool->MySolPool_check( key );
-//
-//      if( index > -1 ){
-//#if debug
-//   cout << "the relaxsol is found from the pool" << endl;
-//#endif
-//         mysol = pool->MySolPool_getsol( index );
-//         lb = 2 * mysol->val_mL + penalcf * (double)sum_Branchz[2];
-//         SCIP_CALL( SCIPupdateLocalLowerbound(scip, lb));
-//
-//         SCIPfreeBufferArray(scip, &Branchz);
-//         SCIPfreeBufferArray(scip, &index_nonzero);
-//         SCIPfreeBufferArray(scip, &solval_01);
-//         SCIPfreeBufferArray(scip, &point);
-//         SCIPfreeBufferArray(scip, &key);
-//
-//         if( dimz == 0 || dimz_ == 0 ){
-//            *result = SCIP_CUTOFF;
-//         }else{
-//            *result=SCIP_SUCCESS;
-//         }
-//
-//         return SCIP_OKAY;
-//      }
-//
-//      // 2. search the relaxsol of the parent node
-//      int*  val_01;
-//      SCIP_CALL( SCIPallocBufferArray(scip, &val_01, p1));
-//      for(i=0; i<p1; i++){
-//         val_01[i] = solval_01[i];
-//      }
-//
-//      assert( parentbr >= 0 && parentbr < p1 );
-//
-//      val_01[parentbr] = 1;
-//
-//      pool->MySolPool_genekey( val_01, key);
-//      index = pool->MySolPool_check( key );
-//
-//      info = 0;
-//      if( index > -1 ){
-//#if debug
-//   cout << "generate the an initial point from the relaxsol of the parent node" << endl;
-//#endif
-//         mysol = pool->MySolPool_getsol( index );
-//
-//         for(i=0; i<dimb; i++){
-//            point[i] = mysol->val[index_nonzero[i]];
-//         }
-//         info = 1;
-//      }else{
-//      // 3. search
-//         for(i=0; i<p1; i++){
-//            for(j=0; j<p1; j++){
-//               val_01[j] = solval_01[j];
-//            }
-//            if( val_01[i] == 1 ){
-//               val_01[i] = 0;
-//            }else{
-//               val_01[i] = 1;
-//            }
-//
-//            pool->MySolPool_genekey( val_01, key);
-//            index = pool->MySolPool_check( key );
-//
-//            if( index > -1){
-//#if debug
-//   cout << "generate the intial point" << endl;
-//#endif
-//               info = 1;
-//               mysol = pool->MySolPool_getsol( index );
-//
-//               for(j=0; j<dimb; j++){
-//                  point[j] = mysol->val[index_nonzero[j]];
-//               }
-//               break;
-//            }
-//         }
-//      }
-//
-//      // 4.
-//      if( info == 0 ){
-//         for(i=0; i<dimb; i++){
-//            point[i] = 0.0;
-//         }
-//         info = 1;
-//      }
-//
-//      // free
-//      SCIPfreeBufferArray( scip, &val_01);
-//      SCIPfreeBufferArray(scip, &key);
-//
-//   }else{
-//
-//      for(i=0; i<dimb; i++){
-//         point[i] = 0.0;
-//      }
-//
-//      info = 1;
-//   }
-//
-   for( i = 0; i < dimb; i++ )
-      point[i] = 0.0;
+   if( MP_WARM && lastbranchvar != NULL )
+   {
+      int *key;
+      int n_key = pool->MySolPool_Nkey();
+      int index;
 
-   info = 1;
+      // 1. search the relaxsol of the current node
+      SCIP_CALL( SCIPallocBufferArray(scip, &key, n_key));
+
+      pool->MySolPool_genekey( solval_01, key);
+      index = pool->MySolPool_check( key );
+
+      if( index > -1 )
+      {
+#if debug
+   cout << "the relaxsol is found from the pool" << endl;
+#endif
+         mysol = pool->MySolPool_getsol( index );
+         lb = 2 * mysol->val_mL + penalcf * (double)sum_branchinfo[2];
+         SCIP_CALL( SCIPupdateLocalLowerbound(scip, lb));
+
+         SCIPfreeBufferArray(scip, &branchinfo);
+         SCIPfreeBufferArray(scip, &index_nonzero);
+         SCIPfreeBufferArray(scip, &solval_01);
+         SCIPfreeBufferArray(scip, &point);
+         SCIPfreeBufferArray(scip, &key);
+
+         if( dimz == 0 || dimz_ == 0 )
+         {
+            *result = SCIP_CUTOFF;
+         }else{
+            *result=SCIP_SUCCESS;
+         }
+
+         return SCIP_OKAY;
+      }
+
+      // 2. search the relaxsol of the parent node
+      int*  val_01;
+      SCIP_CALL( SCIPallocBufferArray(scip, &val_01, p1));
+      for(i=0; i<p1; i++){
+         val_01[i] = solval_01[i];
+      }
+
+      int parentbr = -1;
+      for( i = 0; i < p1; i++ )
+      {
+         if( var_z[i] == lastbranchvar )
+         {
+            parentbr = i;
+            break;
+         }
+      }
+
+      assert( parentbr >= 0 && parentbr < p1 );
+
+      val_01[parentbr] = 1;
+
+      pool->MySolPool_genekey( val_01, key);
+      index = pool->MySolPool_check( key );
+
+      info = 0;
+      if( index > -1 )
+      {
+#if debug
+   cout << "generate the an initial point from the relaxsol of the parent node" << endl;
+#endif
+         mysol = pool->MySolPool_getsol( index );
+
+         for(i=0; i<dimb; i++){
+            point[i] = mysol->val[index_nonzero[i]];
+         }
+         info = 1;
+      }
+      else
+      {
+      // 3. search
+         for(i=0; i<p1; i++){
+            for(j=0; j<p1; j++){
+               val_01[j] = solval_01[j];
+            }
+            if( val_01[i] == 1 ){
+               val_01[i] = 0;
+            }else{
+               val_01[i] = 1;
+            }
+
+            pool->MySolPool_genekey( val_01, key);
+            index = pool->MySolPool_check( key );
+
+            if( index > -1){
+#if debug
+   cout << "generate the intial point" << endl;
+#endif
+               info = 1;
+               mysol = pool->MySolPool_getsol( index );
+
+               for(j=0; j<dimb; j++){
+                  point[j] = mysol->val[index_nonzero[j]];
+               }
+               break;
+            }
+         }
+      }
+
+      // 4.
+      if( info == 0 )
+      {
+         for(i=0; i<dimb; i++)
+            point[i] = 0.0;
+
+         info = 1;
+      }
+
+      // free
+      SCIPfreeBufferArray( scip, &val_01);
+      SCIPfreeBufferArray(scip, &key);
+
+   }else{
+
+      for(i=0; i<dimb; i++){
+         point[i] = 0.0;
+      }
+
+      info = 1;
+   }
+
    assert( info == 1 );
 
 #if debug
@@ -691,9 +705,6 @@ SCIP_DECL_RELAXEXEC(relaxExecNewton)
 
       if( info != 0 )
       {
-         cout << info << endl;
-         assert(0);
-         exit(1);
 //#if debug
 #if 0
          cout << "warning: info= " << info << " , objval= " << objval << endl;
@@ -742,7 +753,13 @@ SCIP_DECL_RELAXEXEC(relaxExecNewton)
 //       }
 
 //    ]else[
-         //mydcopy_( q, d, dimb);
+         //SCIP_CALL( SCIPcblasCopy( q, d, dimb) );
+         for( i = 0; i < dimb; i++ )
+            point[i] = 0.0;
+
+         SCIP_CALL( SCIPcblasDgemv2( subX_, n, dimb, point, Xb) );
+         objval = - Loglikelifood_( scip, n, dimb, subcoef, Xb, point);
+         continue;
       }
 
       // step2: find the stepsize
@@ -807,9 +824,9 @@ SCIP_DECL_RELAXEXEC(relaxExecNewton)
       }
    }
 
-   //if( MP_MAXPOOL > 0 ){
-   //   pool->MySolPool_store( solval_01, solval, objval);
-   //}
+   if( MP_WARM == true && MP_MAXPOOL > 0 ){
+      pool->MySolPool_store( solval_01, solval, objval);
+   }
 
    SCIP_Bool store;
    int nsols = SCIPgetNSols(scip);

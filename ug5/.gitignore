@@ -9,3 +9,4 @@ test*.sh
 check_*
 bin
 obj
+!check/run

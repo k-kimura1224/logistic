@@ -15,8 +15,8 @@ nodeselection/restartdfs/stdpriority = 300000
 # parameter for my heuristics
 #heuristics/forward/freq = 1
 #heuristics/forward/maxdepth = 10
-#heuristics/backward/freq = 1
-#heuristics/backward/maxdepth = 10
+heuristics/backward/freq = 2
+heuristics/backward/maxdepth = 5
 
 #maximal number of solutions candidates to store
 #in the solution storage of the original problem [default:10]

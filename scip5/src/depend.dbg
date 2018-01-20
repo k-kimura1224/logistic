@@ -1,5 +1,6 @@
 main.o: src/main.cpp src/reader_logreg.h src/probdata_logreg.h \
  src/relax_newton.h \
+ src/heur_backward.h \
  ../../src/scip/scip.h ../../src/scip/def.h \
  ../../src/scip/type_retcode.h ../../src/scip/pub_message.h \
  ../../src/scip/type_message.h ../../src/blockmemshell/memory.h \
@@ -412,3 +413,10 @@ logistic_regression.o: src/logistic_regression.cpp src/logistic_regression.h \
 stepsize.o: src/stepsize.cpp src/stepsize.h \
  src/call_cblas.h \
  src/logistic_regression.h
+heur_backward.o: src/heur_backward.cpp src/heur_backward.h \
+ src/probdata_logreg.h \
+ src/mysolpool.h \
+ src/logistic_regression.h \
+ src/stepsize.h \
+ src/call_cblas.h \
+ src/convenient_tool.h
