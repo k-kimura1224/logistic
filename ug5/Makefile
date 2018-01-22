@@ -65,7 +65,8 @@ UGOBJ		=	logreg_plugins.o
 
 MAINOBJXX	=	reader_logreg.o probdata_logreg.o mysolpool.o \
 					convenient_tool.o call_cblas.o get_lineardependence.o \
-					relax_newton.o logistic_regression.o stepsize.o
+					relax_newton.o logistic_regression.o stepsize.o \
+					heur_backward.o
 
 USRLDFLAGS= -llapack -lblas
 #USRLDFLAGS=  -L/usr/lib64/libopenblas.so -lopenblas -llapack -lpthread
