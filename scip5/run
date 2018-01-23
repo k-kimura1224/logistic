@@ -5,6 +5,7 @@ run()
 	name=$1
    echo " -- running ${name} -- "
 	./bin/scip -s ./settings/default.set -f ../data/${name}.logreg > ./test/${name}.log
+   grep "Solving Time" ./test/${name}.log
    grep objval ./test/${name}.log
 }
 

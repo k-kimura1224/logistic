@@ -1,6 +1,8 @@
 main.o: src/main.cpp src/reader_logreg.h src/probdata_logreg.h \
  src/relax_newton.h \
  src/heur_backward.h \
+ src/heur_forward.h \
+ src/branch_frequent.h \
  ../../src/scip/scip.h ../../src/scip/def.h \
  ../../src/scip/type_retcode.h ../../src/scip/pub_message.h \
  ../../src/scip/type_message.h ../../src/blockmemshell/memory.h \
@@ -420,3 +422,14 @@ heur_backward.o: src/heur_backward.cpp src/heur_backward.h \
  src/stepsize.h \
  src/call_cblas.h \
  src/convenient_tool.h
+heur_forward.o: src/heur_forward.cpp src/heur_forward.h \
+ src/probdata_logreg.h \
+ src/mysolpool.h \
+ src/logistic_regression.h \
+ src/stepsize.h \
+ src/call_cblas.h \
+ src/convenient_tool.h
+branch_frequent.o: src/branch_frequent.cpp src/branch_frequent.h \
+ src/probdata_logreg.h \
+ src/convenient_tool.h \
+ src/mysolpool.h 

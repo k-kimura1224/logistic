@@ -27,10 +27,10 @@
 											 * 3:
 											 */
 
-#if 1
+#if 0
 #define MP_FB_PRI				200000	/* for branch_myfullstrong.cpp */
 #define MP_MFB_PRI			0			/* for branch_mostfreq.cpp */
-#elif 0
+#elif 1
 #define MP_FB_PRI				0
 #define MP_MFB_PRI			200000
 #else

@@ -9,18 +9,20 @@ run()
    grep "Total Time" ${name}_LC0_T.status
    grep "Primal Bound" ${name}_LC0_T.status
    grep "Dual Bound" ${name}_LC0_T.status
+   grep "Gap" ${name}_LC0_T.status
 
 }
 
 num=$1
 
-echo "**num of threads is $num **"
+echo "** num of threads is $num **"
 echo ""
 
 rm -f *.prm
 rm -f *.sol
 rm -f *.status
 rm -f *_LC0
+rm -f *.log
 
 run $num pima-indians-diabetes
 echo "opt = 739.45"
@@ -44,7 +46,7 @@ run $num biodeg
 echo "best = 653.29"
 
 run $num spectf
-echo "best = 171.12"
+echo "best = 169.42"
 
 run $num statG
 echo "best = 958.15"

@@ -362,6 +362,7 @@ void MFB_SolPool::MFBSolPool_update(
 		}
 	}
 }
+
 int	MFB_SolPool::MFBSolPool_maxfreq(
 	int	*list
 ) const

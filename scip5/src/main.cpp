@@ -16,14 +16,8 @@
 #include "probdata_logreg.h"
 #include "relax_newton.h"
 #include "heur_backward.h"
-//#include "matrix.h"
-//#include "vector.h"
-//#include "cblapack.h"
-//#include "linear_dependent.h"
-//#include "set_myparameter.h"
-//#include "heur_forward.h"
-//#include "branch_myfullstrong.h"
-//#include "branch_mostfreq.h"
+#include "heur_forward.h"
+#include "branch_frequent.h"
 
 
 /* namespace usage */
@@ -157,17 +151,17 @@ SCIP_RETCODE runShell(
    /* include relaxator */
 	SCIP_CALL( SCIPincludeRelaxNewton(scip) );
 
-	///* include primal heuristics */
+	/* include primal heuristics */
 	SCIP_CALL( SCIPincludeHeurBackward(scip));
 
-	///* include primal heuristics */
-	//SCIP_CALL( SCIPincludeHeurForward(scip));
+	/* include primal heuristics */
+	SCIP_CALL( SCIPincludeHeurForward(scip));
 
 	///* include branching rule */
 	//SCIP_CALL( SCIPincludeBranchruleMyfullstrong(scip));
 
 	///* include branching rule */
-	//SCIP_CALL( SCIPincludeBranchruleMostfreq(scip));
+	SCIP_CALL( SCIPincludeBranchruleFrequent(scip));
 
    /* set LOGREG-specific default parameters */
    /* propagating */

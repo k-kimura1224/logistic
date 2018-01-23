@@ -3,7 +3,7 @@ limits/time = 5000
 # parameter for my branching rules
 # [type: int, default: 200000]
 # [type: int, default: 100000]
-#branching/frequent/priority = 200000
+branching/frequent/priority = 200000
 #branching/fullstrong_maic/priority = 100000
 #branching/frequent/priority = 100000
 #branching/fullstrong_maic/priority = 200000
@@ -13,8 +13,8 @@ nodeselection/restartdfs/stdpriority = 300000
 #nodeselection/bfs/stdpriority = 300000
 
 # parameter for my heuristics
-#heuristics/forward/freq = 1
-#heuristics/forward/maxdepth = 10
+heuristics/forward/freq = 2
+heuristics/forward/maxdepth = 5
 heuristics/backward/freq = 2
 heuristics/backward/maxdepth = 5
 

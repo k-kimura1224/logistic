@@ -10,10 +10,8 @@
 #include "relax_newton.h"
 #include "probdata_logreg.h"
 #include "heur_backward.h"
-//#include "heur_forward.h"
-//#include "branch_frequent.h"
-//#include "branch_myfullstrong.h"
-//#include "set_myparameter.h"
+#include "heur_forward.h"
+#include "branch_frequent.h"
 using namespace UG;
 using namespace ParaSCIP;
 
@@ -30,18 +28,13 @@ class LineregUserPlugins : public ScipUserPlugins {
 		SCIP_CALL_ABORT( SCIPincludeRelaxNewton(scip) );
 
 		/* include primal heuristics */
-		//SCIP_CALL_ABORT( SCIPincludeHeurForward(scip));
+		SCIP_CALL_ABORT( SCIPincludeHeurForward(scip));
 
 		/* include primal heuristics */
 		SCIP_CALL_ABORT( SCIPincludeHeurBackward(scip));
 
 		/* include branching rule */
-		//SCIP_CALL_ABORT( SCIPincludeBranchruleFrequent(scip));
-
-		/* include branching rule */
-		//SCIP_CALL_ABORT( SCIPincludeBranchruleMyfullstrong(scip));
-
-		//SCIP_CALL_ABORT( SCIPsetMyParameter( scip ));
+		SCIP_CALL_ABORT( SCIPincludeBranchruleFrequent(scip));
    }
 
    void writeUserSolution(SCIP *scip, int nSolvers, double dual)

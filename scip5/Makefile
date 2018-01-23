@@ -41,9 +41,7 @@ MAINNAME	=	scip
 MAINOBJ	=	main.o reader_logreg.o probdata_logreg.o mysolpool.o \
 				convenient_tool.o call_cblas.o get_lineardependence.o \
 				relax_newton.o logistic_regression.o stepsize.o \
-				heur_backward.o
-				#heur_forward.o heur_backward.o branch_frequent.o \
-				branch_myfullstrong.o
+				heur_backward.o heur_forward.o branch_frequent.o
 MAINSRC		=	$(addprefix $(SRCDIR)/,$(MAINOBJ:.o=.cpp))
 MAINDEP		=	$(SRCDIR)/depend.$(OPT)
 
