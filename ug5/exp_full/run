@@ -7,8 +7,7 @@ run()
    echo " -- running ${name} -- "
 	export OMP_NUMTHREADS=1
 	#../bin/fscip ../settings/testrun.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
-	#../bin/fscip ../settings/default.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
-	../bin/fscip ../settings/noheur.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+	../bin/fscip ../settings/default.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
    grep "Total Time" ${name}_LC0_T.status
    grep "Primal Bound" ${name}_LC0_T.status
    grep "Dual Bound" ${name}_LC0_T.status
@@ -26,23 +25,23 @@ rm -f *.status
 rm -f *_LC0
 rm -f *.log
 
-run $num pima-indians-diabetes
-echo "opt = 739.45"
-
-run $num mammo
-echo "opt = 611.94"
-
-run $num seismic-bumps
-echo "opt = 1097.11"
-
-run $num parkin
-echo "opt = 113.50"
-
-run $num statH
-echo "opt = 195.62"
-
-run $num breast
-echo "opt = 147.04"
+#run $num pima-indians-diabetes
+#echo "opt = 739.45"
+#
+#run $num mammo
+#echo "opt = 611.94"
+#
+#run $num seismic-bumps
+#echo "opt = 1097.11"
+#
+#run $num parkin
+#echo "opt = 113.50"
+#
+#run $num statH
+#echo "opt = 195.62"
+#
+#run $num breast
+#echo "opt = 147.04"
 
 run $num biodeg
 echo "best = 653.29"

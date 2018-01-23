@@ -1,0 +1,5 @@
+*.prm
+*.sol
+*.status
+*_LC0
+*.log

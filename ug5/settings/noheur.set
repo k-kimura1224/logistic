@@ -1,0 +1,31 @@
+Quiet = FALSE
+# ramp-up: 0: normal, 1: racing, 2: racing + merging nodes
+RampUpPhaseProcess = 0
+#RampUpPhaseProcess = 1
+#RampUpPhaseProcess = 2
+
+LogSolvingStatus = TRUE
+OutputTabularSolvingStatus = TRUE
+OutputParaParams = 4
+
+TimeLimit = 5000
+
+# has to be FALSE for ramp-up = 0
+RacingStatBranching = FALSE
+NoPreprocessingInLC = TRUE
+#NoPreprocessingInLC = FALSE
+#UseRootNodeCuts = TRUE
+
+# local cuts
+#TransferLocalCuts = TRUE
+TransferLocalCuts = FALSE
+
+NChangeIntoCollectingModeNSolvers = FALSE
+NChangeIntoCollectingMode = 1
+DualBoundGainTest = FALSE
+
+SolverSettingsAtRootNode = "../settings/noheur_logreg.set"
+SolverSettingsExceptRootNode = "../settings/noheur_logreg.set"
+
+#SolverSettingsAtRootNode = "../settings/no_presolve.set"
+#SolverSettingsExceptRootNode = "../settings/no_presolve.set"
