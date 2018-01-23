@@ -1,0 +1,40 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: debug] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+reading user parameter file <../read_sol/settings/default.set>
+
+read problem <../data/mammo.logreg>
+============
+
+File name	:	../data/mammo.logreg
+Problem name 	:	mammo
+Number of data	:	815
+Number of var	:	18
+The given data has linear dependence
+4 sets of column vector are linearly dependent:
+{ 2 3 4 5}, { 7 8 9 10}, { 11 12 13 14 15}, { 16 17 18 19}, 
+unknown variable <t_1> of solution file <mammo_05.sol>
+  (further unknown variables are ignored)
+unknown variable <t_1> of solution file <mammo_09.sol>
+  (further unknown variables are ignored)
+unknown variable <t_1> of solution file <mammo_17.sol>
+  (further unknown variables are ignored)
+read_05
+read_09
+read_17
+
+1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 
+0 0 0 0 1 1 1 1 1 1 1 0 1 0 0 0 0 0 1 
+0 1 0 0 1 1 0 0 1 1 1 0 1 0 0 0 0 0 1 
+k: 10
+AIC: 617.007
+k: 8
+AIC: 613.553
+k: 8
+AIC: 611.939

@@ -1,0 +1,38 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: debug] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+reading user parameter file <../read_sol/settings/default.set>
+
+read problem <../data/spectf.logreg>
+============
+
+File name	:	../data/spectf.logreg
+Problem name 	:	spectf
+Number of data	:	267
+Number of var	:	44
+The given data has linear independence
+unknown variable <t_1> of solution file <spectf_05.sol>
+  (further unknown variables are ignored)
+unknown variable <t_1> of solution file <spectf_09.sol>
+  (further unknown variables are ignored)
+unknown variable <t_1> of solution file <spectf_17.sol>
+  (further unknown variables are ignored)
+read_05
+read_09
+read_17
+
+1 0 0 0 0 0 0 0 1 0 1 0 0 1 1 1 1 0 0 0 0 0 0 0 1 0 1 1 1 0 0 0 1 1 0 0 1 0 0 0 1 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 1 0 0 0 0 0 0 0 1 0 1 1 1 0 0 0 1 1 0 1 0 0 0 0 1 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 1 0 0 0 0 0 0 0 1 0 1 1 1 0 0 0 1 1 0 1 0 0 0 0 1 0 0 0 0 
+k: 15
+AIC: 168.927
+k: 14
+AIC: 169.339
+k: 14
+AIC: 169.339

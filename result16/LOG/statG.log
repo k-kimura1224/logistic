@@ -1,0 +1,39 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: debug] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+reading user parameter file <../read_sol/settings/default.set>
+
+read problem <../data/statG.logreg>
+============
+
+File name	:	../data/statG.logreg
+Problem name 	:	statG
+Number of data	:	1000
+Number of var	:	61
+The given data has linear dependence
+13 sets of column vector are linearly dependent:
+unknown variable <t_1> of solution file <statG_05.sol>
+  (further unknown variables are ignored)
+unknown variable <t_1> of solution file <statG_09.sol>
+  (further unknown variables are ignored)
+unknown variable <t_1> of solution file <statG_17.sol>
+  (further unknown variables are ignored)
+read_05
+read_09
+read_17
+
+1 1 1 1 1 1 1 0 0 1 1 1 0 0 0 0 1 0 0 0 1 1 1 1 0 0 0 1 1 1 1 1 1 0 0 1 0 0 0 1 0 1 1 1 1 0 0 0 1 1 0 0 0 0 0 0 0 0 0 1 0 1 
+1 1 1 1 0 1 1 0 0 1 1 1 0 0 0 0 1 0 0 0 1 1 1 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 1 1 0 
+1 1 1 1 0 1 1 0 0 1 1 1 0 0 0 0 1 0 0 0 1 1 1 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 1 0 1 0 
+k: 28
+AIC: 965.963
+k: 24
+AIC: 958.148
+k: 24
+AIC: 958.148

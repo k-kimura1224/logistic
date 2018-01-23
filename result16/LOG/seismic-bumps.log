@@ -1,0 +1,40 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: debug] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+reading user parameter file <../read_sol/settings/default.set>
+
+read problem <../data/seismic-bumps.logreg>
+============
+
+File name	:	../data/seismic-bumps.logreg
+Problem name 	:	seismic-bumps
+Number of data	:	2584
+Number of var	:	21
+The given data has linear dependence
+4 sets of column vector are linearly dependent:
+{ 2 3}, { 4 5 6}, { 7 8}, { 13 14 15}, 
+unknown variable <t_1> of solution file <seismic-bumps_05.sol>
+  (further unknown variables are ignored)
+unknown variable <t_1> of solution file <seismic-bumps_09.sol>
+  (further unknown variables are ignored)
+unknown variable <t_1> of solution file <seismic-bumps_17.sol>
+  (further unknown variables are ignored)
+read_05
+read_09
+read_17
+
+1 0 0 1 1 1 0 0 0 1 1 0 1 1 1 1 0 0 0 0 0 0 
+1 0 0 0 0 0 0 1 1 1 0 1 0 0 1 1 0 0 1 0 0 0 
+1 0 0 0 0 0 0 1 1 1 0 1 0 0 1 1 0 0 1 0 0 0 
+k: 8
+AIC: 1117.81
+k: 8
+AIC: 1098.12
+k: 8
+AIC: 1098.12
