@@ -432,4 +432,4 @@ heur_forward.o: src/heur_forward.cpp src/heur_forward.h \
 branch_frequent.o: src/branch_frequent.cpp src/branch_frequent.h \
  src/probdata_logreg.h \
  src/convenient_tool.h \
- src/mysolpool.h 
+ src/mysolpool.h

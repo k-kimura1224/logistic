@@ -32,6 +32,9 @@
 #include "convenient_tool.h"
 #include "call_cblas.h"
 
+#include <stdio.h>
+#include <iostream>
+using namespace std;
 
 /** calclulate the number of linearly dependent sets from among colmun vectors */
 SCIP_RETCODE SCIPgetNLineDependSet(
