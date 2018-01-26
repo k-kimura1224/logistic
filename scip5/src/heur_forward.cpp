@@ -416,6 +416,7 @@ SCIP_DECL_HEUREXEC(heurExecForward)
    }
 
    AIC = SCIPinfinity(scip);
+   int ct_error;
 
    // forward selection
    while( 1 )
@@ -570,6 +571,7 @@ SCIP_DECL_HEUREXEC(heurExecForward)
             objval = - Loglikelifood_( scip, n, dim, subcoef, Xb, point);
             assert( objval < SCIPinfinity(scip) );
 
+            ct_error = 0;
             while( 1 )
             {
                // step1: find a descent direction by solving Ad = q
@@ -609,13 +611,23 @@ SCIP_DECL_HEUREXEC(heurExecForward)
 
                if( info != 0 )
                {
-                  //mydcopy_( q, d, dim);
-                  for( j = 0; j < dim; j++ )
-                     point[j] = 0.0;
+                  assert( ct_error == 1 || ct_error == 0 );
+                  if( ct_error == 0 )
+                  {
+                     for( j = 0; j < dim; j++ )
+                        point[j] = 0.0;
 
-                  SCIP_CALL( SCIPcblasDgemv2( subX_, n, dim, point, Xb) );
-                  objval = - Loglikelifood_( scip, n, dim, subcoef, Xb, point);
-                  continue;
+                     SCIP_CALL( SCIPcblasDgemv2( subX_, n, dim, point, Xb) );
+                     objval = - Loglikelifood_( scip, n, dim, subcoef, Xb, point);
+                     ct_error++;
+                     continue;
+                  }
+                  else
+                  {
+                     exit(1);
+                     info = SCIPclapackDgesv( scip, A_, q, dim, d);
+                     if( info != 0 ) exit(1);
+                  }
                }
 
                // step2: find the stepsize

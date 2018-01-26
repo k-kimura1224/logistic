@@ -49,6 +49,10 @@ extern "C" {
 int dposv_( char* uplo, int* n, int* nrhs, double* A,
       int* lda, double* x, int* ldb, int* info);
 }
+extern "C" {
+   int dgesv_( int *n, int *nrhs, double *A,
+   int *lda, int *ipiv, double *x, int *ldb, int *info);
+}
 #endif
 
 #include "call_cblas.h"
@@ -191,6 +195,50 @@ int SCIPclapackDposv(
    return info;
 }
 
+
+ /*
+ // compute Ax=b with LU decomposition
+ //
+ *  This function assumes that the matrix is positive definite and symmetric.
+ *
+ *  @return Return 0 if solving process is successful
+ */
+int SCIPclapackDgesv(
+   SCIP*                 scip,               /**< SCIP data structure */
+   const SCIP_Real*      matrix,             /**< matrix with ColMajor */
+   const SCIP_Real*      vector,             /**< vector */
+   const int             dim,                /**< dimension */
+   SCIP_Real*            solution            /**< array to store solution */
+   )
+{
+
+   int      *ipiv;
+   int one = 1;
+   int info;
+   int n = dim;
+   SCIP_Real* copymatrix;
+
+   assert(scip != NULL);
+   assert(matrix != NULL);
+   assert(vector != NULL);
+   assert(dim > 0);
+   assert(solution != NULL);
+
+   /* allocate memory for copymatrix */
+   SCIP_CALL( SCIPallocBufferArray(scip, &copymatrix, n * n) );
+   SCIP_CALL( SCIPallocBufferArray(scip, &ipiv, n) );
+
+   SCIP_CALL( SCIPcblasCopy(matrix, copymatrix, n*n) );
+   SCIP_CALL( SCIPcblasCopy(vector, solution, n) );
+
+   dgesv_( &n, &one, copymatrix, &n, ipiv, solution, &n, &info);
+
+   /* free */
+   SCIPfreeBufferArray(scip, &copymatrix);
+   SCIPfreeBufferArray(scip, &ipiv);
+
+   return info;
+}
 
 /** call dgemv function of cblas
  *

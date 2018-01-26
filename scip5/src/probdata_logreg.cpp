@@ -62,6 +62,47 @@ struct SCIP_ProbData
  * @{
  */
 
+/* check data */
+static
+SCIP_RETCODE checkData(
+      int         n,
+      int         p,
+      SCIP_Real* data
+      )
+{
+   assert( n > p );
+   assert( p > 0 );
+
+   if( !( n > p && p > 0 ) )
+   {
+      return SCIP_ERROR;
+   }
+
+   int i;
+   int j;
+   int p1 = p+1;
+   SCIP_Real buf;
+
+   for( i = 0; i < p1; i++ )
+   {
+      buf = data[i];
+
+      for( j = 0; j < n; j++ )
+      {
+         if( fabs( buf - data[j*p1 + i] ) > 1.0e-6 )
+            break;
+
+         if( j == n - 1 )
+         {
+            cout << "error: colmun= " << i << endl;
+            return SCIP_ERROR;
+         }
+      }
+   }
+
+   return SCIP_OKAY;
+}
+
 
 /** creates problem data */
 static
@@ -1024,7 +1065,16 @@ SCIP_RETCODE divideData(
    assert(explanatory != NULL);
 
    for( i = 0; i < n; i++ )
+   {
       explained[i] = data[i * (p + 1) + i_ex - 1];
+      assert( explained[i] == 1 || explained[i] == 0 );
+
+      if( !( explained[i] == 1 || explained[i] == 0 ) )
+      {
+         cout << "class[i] = " << explained[i] << endl;
+         return SCIP_ERROR;
+      }
+   }
 
    for( i = 0; i < n; i++ )
    {
@@ -1085,6 +1135,8 @@ SCIP_RETCODE SCIPprobdataCreate(
 
 	/* penalty coefficient */
 	probdata->penalcf = 2.0;
+
+   SCIP_CALL( checkData(n, p, data) );
 
    /* normalize data */
    SCIP_CALL( normalization(scip, n, p, i_ex, data) );

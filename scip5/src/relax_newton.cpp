@@ -635,6 +635,7 @@ SCIP_DECL_RELAXEXEC(relaxExecNewton)
 #endif
 
    int ct_newton=0;
+   int ct_error = 0;
 
    while(1)
    {
@@ -705,6 +706,9 @@ SCIP_DECL_RELAXEXEC(relaxExecNewton)
 
       if( info != 0 )
       {
+#if debug
+         cout << "relax:info = " << info << endl;
+#endif
 //#if debug
 #if 0
          cout << "warning: info= " << info << " , objval= " << objval << endl;
@@ -754,12 +758,24 @@ SCIP_DECL_RELAXEXEC(relaxExecNewton)
 
 //    ]else[
          //SCIP_CALL( SCIPcblasCopy( q, d, dimb) );
-         for( i = 0; i < dimb; i++ )
-            point[i] = 0.0;
+         assert( ct_error == 1 || ct_error == 0 );
+         if( ct_error == 0 )
+         {
+            for( i = 0; i < dimb; i++ )
+               point[i] = 0.0;
 
-         SCIP_CALL( SCIPcblasDgemv2( subX_, n, dimb, point, Xb) );
-         objval = - Loglikelifood_( scip, n, dimb, subcoef, Xb, point);
-         continue;
+            SCIP_CALL( SCIPcblasDgemv2( subX_, n, dimb, point, Xb) );
+            objval = - Loglikelifood_( scip, n, dimb, subcoef, Xb, point);
+            ct_error++;
+            continue;
+         }
+         else
+         {
+            exit(1);
+            info = SCIPclapackDgesv( scip, A_, q, dimb, d);
+
+            if( info != 0 ) exit(1);
+         }
       }
 
       // step2: find the stepsize

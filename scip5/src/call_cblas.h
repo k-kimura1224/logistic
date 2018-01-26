@@ -100,6 +100,21 @@ int SCIPclapackDposv(
    SCIP_Real*            solution            /**< array to store solution */
    );
 
+/** compute a linear system with Cholesky decomposition;
+ *
+ *  This function assumes that the matrix is positive definite and symmetric.
+ *
+ *  @return Return 0 if solving process is successful
+ */
+extern
+int SCIPclapackDgesv(
+   SCIP*                 scip,               /**< SCIP data structure */
+   const SCIP_Real*      matrix,             /**< matrix with ColMajor */
+   const SCIP_Real*      vector,             /**< vector */
+   const int             dim,                /**< dimension */
+   SCIP_Real*            solution            /**< array to store solution */
+   );
+
 
 /** call dgemv function of cblas
  *

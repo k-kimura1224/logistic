@@ -193,6 +193,7 @@ SCIP_RETCODE SCIPgetNLineDependSet(
       }
       else
       {
+        // cout << norm << endl;
          result[i] = 0;
          memo = i;
          add = 1;
