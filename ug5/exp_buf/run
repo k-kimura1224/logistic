@@ -1,0 +1,55 @@
+#!/bin/sh
+#chmod u+x run.sh
+run()
+{
+   num=$1
+	name=$2
+   echo " -- running ${name} -- "
+	export OMP_NUMTHREADS=1
+	#../bin/fscip ../settings/testrun.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+	../bin/fscip ../settings/default.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+	#../bin/fscip ../settings/noheur.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+	#../bin/fscip ../settings/nobranch.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+   grep "Total Time" ${name}_LC0_T.status
+   grep "Primal Bound" ${name}_LC0_T.status
+   grep "Dual Bound" ${name}_LC0_T.status
+   grep "Gap                :" ${name}_LC0_T.status
+}
+
+num=$1
+
+echo "** num of threads is $num **"
+echo ""
+
+rm -f *.prm
+rm -f *.sol
+rm -f *.status
+rm -f *_LC0
+rm -f *.log
+
+run $num pima-indians-diabetes
+echo "opt = 739.45"
+
+run $num mammo
+echo "opt = 611.94"
+
+run $num seismic-bumps
+echo "opt = 1097.11"
+
+run $num parkin
+echo "opt = 113.50"
+
+run $num statH
+echo "opt = 195.62"
+
+run $num breast
+echo "opt = 147.04"
+
+run $num biodeg
+echo "best = 653.29"
+
+run $num spectf
+echo "best = 169.42"
+
+run $num statG
+echo "best = 958.15"
