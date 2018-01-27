@@ -624,9 +624,11 @@ SCIP_DECL_HEUREXEC(heurExecForward)
                   }
                   else
                   {
-                     exit(1);
-                     info = SCIPclapackDgesv( scip, A_, q, dim, d);
-                     if( info != 0 ) exit(1);
+                     assert(0);
+                     objval = SCIPinfinity(scip);
+                     break;
+                     //info = SCIPclapackDgesv( scip, A_, q, dim, d);
+                     //if( info != 0 ) exit(1);
                   }
                }
 

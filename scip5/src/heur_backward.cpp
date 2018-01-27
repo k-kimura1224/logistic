@@ -310,6 +310,7 @@ SCIP_DECL_HEUREXEC(heurExecBackward)
    int info;
    int buf_int;
    Solution*      mysol;
+   int ct_error;
 
    SCIP_CALL( SCIPallocBufferArray(scip, &pi, n));
    SCIP_CALL( SCIPallocBufferArray(scip, &Xb, n));
@@ -469,6 +470,7 @@ SCIP_DECL_HEUREXEC(heurExecBackward)
             objval = - Loglikelifood_( scip, n, dim, subcoef, Xb, point);
             assert( objval < SCIPinfinity(scip) );
 
+            ct_error = 0;
             while(1)
             {
                // step1: find a descent direction by solving Ad = q
@@ -507,14 +509,22 @@ SCIP_DECL_HEUREXEC(heurExecBackward)
 
                if( info != 0 )
                {
-                  //mydcopy_( q, d, dim);
-                  for( j = 0; j < dim; j++ )
-                     point[j] = 0.0;
+                  assert( ct_error == 1 || ct_error == 0 );
+                  if( ct_error == 0 )
+                  {
+                     for( j = 0; j < dim; j++ )
+                        point[j] = 0.0;
 
-                  SCIP_CALL( SCIPcblasDgemv2( subX_, n, dim, point, Xb) );
-                  objval = - Loglikelifood_( scip, n, dim, subcoef, Xb, point);
-                  continue;
-
+                     SCIP_CALL( SCIPcblasDgemv2( subX_, n, dim, point, Xb) );
+                     objval = - Loglikelifood_( scip, n, dim, subcoef, Xb, point);
+                     ct_error++;
+                     continue;
+                  }
+                  else
+                  {
+                     objval = SCIPinfinity(scip);
+                     break;
+                  }
                }
 
                // step2: find the stepsize

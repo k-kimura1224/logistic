@@ -201,6 +201,45 @@ SCIP_RETCODE calcVariance(
    return SCIP_OKAY;
 }
 
+static
+SCIP_Real calcBound(
+   const char*           sampledatafile,
+   int                   predict_p,
+   int*                  solvalint,
+   SCIP_Real*             solval
+   )
+{
+   /* for sampledatafile */
+   int n;
+   int p;
+   int i_ex;
+   SCIP_Real* data;                  /**< array to store data */
+   SCIP_Real* y;                  /**< array to store data */
+   SCIP_Real* x;                  /**< array to store data */
+
+   /* read sampledatafile */
+   SCIP_CALL( readDataDim(sampledatafile, &n, &p, &i_ex));
+
+   assert( p == predict_p );
+
+   /* allocate memory for data */
+   SCIP_CALL( SCIPallocMemoryArray(scip, &data, n * (p + 1)));
+
+   /* read data points */
+   SCIP_CALL( readData(sampledatafile, n, p, data));
+
+   /* allocate memory */
+   SCIP_CALL( SCIPallocMemoryArray(scip, &y, n));
+   SCIP_CALL( SCIPallocMemoryArray(scip, &x, n*(p+1)));
+
+   /* divide data into explained variable and explanatory variables */
+   SCIP_CALL( divideData(n, p, i_ex, data, y, x));
+
+   SCIPfreeMemoryArrayNull(scip, &data);
+   SCIPfreeMemoryArrayNull(scip, &y);
+   SCIPfreeMemoryArrayNull(scip, &x);
+}
+
 
 static
 SCIP_RETCODE calcMean_and_Variance(
@@ -527,7 +566,7 @@ SCIP_RETCODE run(
       TN = 0;
 
       SCIP_Real pi;
-      SCIP_Real bound = calcBound(sampledatafile, n, p, solvalint, solvalint);
+      SCIP_Real bound = calcBound(sampledatafile, p, solvalint, solval);
 
       for( i = 0; i < n; i++ )
       {
