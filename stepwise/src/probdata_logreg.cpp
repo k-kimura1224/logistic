@@ -2614,7 +2614,7 @@ SCIP_RETCODE SCIPprobdataCreate(
 	}
 
    cout << endl;
-   //SCIP_CALL( forward(scip, probdata, probname) );
+   SCIP_CALL( forward(scip, probdata, probname) );
    cout << endl;
    SCIP_CALL( backward(scip, probdata, probname) );
    exit(0);
