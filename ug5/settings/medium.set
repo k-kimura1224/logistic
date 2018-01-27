@@ -8,7 +8,7 @@ LogSolvingStatus = TRUE
 OutputTabularSolvingStatus = TRUE
 OutputParaParams = 4
 
-TimeLimit = 2000
+TimeLimit = 5000
 
 # has to be FALSE for ramp-up = 0
 RacingStatBranching = FALSE
@@ -24,8 +24,8 @@ NChangeIntoCollectingModeNSolvers = FALSE
 NChangeIntoCollectingMode = 1
 DualBoundGainTest = FALSE
 
-SolverSettingsAtRootNode = "../settings/keiji_logreg_large.set"
-SolverSettingsExceptRootNode = "../settings/keiji_logreg_large.set"
+SolverSettingsAtRootNode = "../settings/keiji_logreg_medium1.set"
+SolverSettingsExceptRootNode = "../settings/keiji_logreg_medium2.set"
 
 #SolverSettingsAtRootNode = "../settings/no_presolve.set"
 #SolverSettingsExceptRootNode = "../settings/no_presolve.set"

@@ -11,9 +11,9 @@
 #../bin/fscip ../settings/noheur.set ../../data/musk2.logreg -q -sth 16 > ./musk2.log
 #cd ../..
 
-cd ./stepwise/exp
-./run ../../data
-cd ../..
+#cd ./stepwise/exp
+#./run ../../data
+#cd ../..
 
 
 cd ./ug5/exp_split
