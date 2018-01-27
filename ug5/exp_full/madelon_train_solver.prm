@@ -2,7 +2,7 @@
 limits/maxorigsol = 100
 presolving/maxrounds = 0
 presolving/maxrestarts = 0
-nodeselection/restartdfs/stdpriority = 300000
+nodeselection/bfs/stdpriority = 300000
 heuristics/clique/freq = -1
 heuristics/coefdiving/freq = -1
 heuristics/completesol/freq = -1
@@ -51,7 +51,7 @@ heuristics/backward/maxdepth = 5
 limits/maxorigsol = 100
 presolving/maxrounds = 0
 presolving/maxrestarts = 0
-nodeselection/restartdfs/stdpriority = 300000
+nodeselection/bfs/stdpriority = 300000
 heuristics/clique/freq = -1
 heuristics/coefdiving/freq = -1
 heuristics/completesol/freq = -1
