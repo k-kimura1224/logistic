@@ -1,0 +1,20 @@
+#!/bin/sh
+#chmod u+x run.sh 
+run()
+{
+	data=$1
+   buf=${1##*/}
+   name=${buf%.*}
+	export OMP_NUM_THREADS=1
+	../bin/scip -f $data > ./${name}.log
+}
+
+rm -f *.sol
+rm -f *.log
+
+dir=$1
+
+for data in `ls -d ${dir}/*.logreg`
+do
+   run $data
+done

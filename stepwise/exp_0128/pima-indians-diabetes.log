@@ -1,0 +1,36 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline 6.3         GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.8           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.0            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../data/pima-indians-diabetes.logreg>
+============
+
+File name	:	../../data/pima-indians-diabetes.logreg
+Problem name 	:	pima-indians-diabetes
+Number of data	:	768
+Number of var	:	8
+The given data has linear independence
+
+[dim=1] time: 0.037097
+[dim=2] time: 0.06673
+[dim=3] time: 0.089769
+[dim=4] time: 0.10935
+[dim=5] time: 0.123932
+[dim=6] time: 0.136645
+[dim=7] time: 0.144878
+[dim=8] time: 0.14994
+[dim=9] Time of forward = 0.152368sec.
+AIC: 739.453
+k: 8
+
+[dim=8] time: 0.017037
+[dim=7] Time of backward = 0.030646sec.
+AIC: 739.453
+k: 8

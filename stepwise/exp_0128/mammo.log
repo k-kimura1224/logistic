@@ -1,0 +1,40 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline 6.3         GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.8           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.0            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../data/mammo.logreg>
+============
+
+File name	:	../../data/mammo.logreg
+Problem name 	:	mammo
+Number of data	:	815
+Number of var	:	18
+The given data has linear dependence
+4 sets of column vector are linearly dependent:
+{ 2 3 4 5}, { 7 8 9 10}, { 11 12 13 14 15}, { 16 17 18 19}, 
+
+[dim=1] time: 0.070315
+[dim=2] time: 0.128007
+[dim=3] time: 0.170623
+[dim=4] time: 0.205886
+[dim=5] time: 0.238256
+[dim=6] time: 0.267488
+[dim=7] time: 0.296643
+[dim=8] time: 0.323719
+[dim=9] Time of forward = 0.348899sec.
+AIC: 611.939
+k: 8
+
+[dim=14] time: 0.066703
+[dim=13] time: 0.091684
+[dim=12] time: 0.115612
+[dim=11] Time of backward = 0.150737sec.
+AIC: 618.212
+k: 12
