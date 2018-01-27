@@ -35,7 +35,7 @@
 
 #define bigM				300.0
 #define MP_WARM 1
-#define debug 1
+#define debug 0
 using namespace std;
 
 struct SCIP_ProbData
