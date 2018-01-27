@@ -771,10 +771,24 @@ SCIP_DECL_RELAXEXEC(relaxExecNewton)
          }
          else
          {
-            exit(1);
-            info = SCIPclapackDgesv( scip, A_, q, dimb, d);
+            //!!!!!!!!!!!!!!!
+            assert(0);
 
-            if( info != 0 ) exit(1);
+            // free
+            SCIPfreeBufferArray(scip, &branchinfo);
+            SCIPfreeBufferArray(scip, &index_nonzero);
+            SCIPfreeBufferArray(scip, &solval_01);
+            SCIPfreeBufferArray(scip, &point);
+            SCIPfreeBufferArray(scip, &d);
+            SCIPfreeBufferArray(scip, &A_);
+            SCIPfreeBufferArray(scip, &Y_);
+            SCIPfreeBufferArray(scip, &q);
+            SCIPfreeBufferArray(scip, &subX_);
+            SCIPfreeBufferArray(scip, &subcoef);
+            SCIPfreeBufferArray(scip, &pi);
+            SCIPfreeBufferArray(scip, &Xb);
+            *result = SCIP_CUTOFF;
+            return SCIP_OKAY;
          }
       }
 

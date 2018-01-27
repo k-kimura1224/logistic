@@ -527,6 +527,7 @@ SCIP_RETCODE run(
       TN = 0;
 
       SCIP_Real pi;
+      SCIP_Real bound = calcBound(sampledatafile, n, p, solvalint, solvalint);
 
       for( i = 0; i < n; i++ )
       {
@@ -546,7 +547,7 @@ SCIP_RETCODE run(
          {
             /* POSITVE */
 
-            if( pi >= 0.5 )
+            if( pi >= 0.4 )
                TP++;
             else
                FN++;
@@ -555,7 +556,7 @@ SCIP_RETCODE run(
          {
             /* NEGATIVE */
 
-            if( pi <= 0.5 )
+            if( pi <= 0.4 )
                TN++;
             else
                FP++;
