@@ -1,0 +1,6 @@
+bin
+obj
+old
+*.log
+src/cblas.h
+src/clapack.h

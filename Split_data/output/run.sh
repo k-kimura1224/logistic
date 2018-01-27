@@ -25,6 +25,6 @@ r=9
 #do
 #   generate $file $k $r
 #done
-generate ../../data/pima-indians-diabetes.logreg $k $r
+generate ../../data/biodeg.logreg $k $r
 
 
