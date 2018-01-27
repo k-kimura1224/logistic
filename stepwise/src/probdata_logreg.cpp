@@ -425,7 +425,7 @@ SCIP_RETCODE forward(
       memo = -1;
       mL = SCIPinfinity(scip);
 
-   cout << "[dim=" << dim << "] ";
+      cout << "[dim=" << dim << "] " << endl;
 #if debug
    cout << "[dim=" << dim << "] ";
    cout << "---------------------------" << endl;
@@ -1101,7 +1101,7 @@ SCIP_RETCODE backward(
       memo = -1;
       mL = 1e+06;
 
-   cout << "[dim=" << dim << "] ";
+      cout << "[dim=" << dim << "] " << endl;
 #if debug
    cout << "[dim=" << dim << "] ";
    cout << "-------------------------" << endl;
