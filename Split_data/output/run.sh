@@ -13,7 +13,7 @@ generate(){
 	for i in `seq 0 $r`
    do
       mkdir $name/$i
-      ../bin/split $file $k $samplename $predictname
+      ../bin/scip $file $k $samplename $predictname
       mv *.logreg $name/$i
    done
 }
@@ -21,8 +21,10 @@ generate(){
 k=5
 r=9
 
-for file in `ls ../../data/*.logreg`
-do
-   generate $file $k $r
-done
+#for file in `ls ../../data/*.logreg`
+#do
+#   generate $file $k $r
+#done
+generate ../../data/pima-indians-diabetes.logreg $k $r
+
 

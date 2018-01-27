@@ -36,6 +36,7 @@
 #define bigM				300.0
 #define MP_WARM 1
 #define debug 0
+#define TIMELIMIT 5000
 using namespace std;
 
 struct SCIP_ProbData
@@ -417,6 +418,7 @@ SCIP_RETCODE forward(
 
    AIC = SCIPinfinity(scip);
    int ct_error;
+   clock_t end;
 
    // forward selection
    while( 1 )
@@ -425,7 +427,7 @@ SCIP_RETCODE forward(
       memo = -1;
       mL = SCIPinfinity(scip);
 
-      cout << "[dim=" << dim << "] " << endl;
+      cout << "[dim=" << dim << "] ";
 #if debug
    cout << "[dim=" << dim << "] ";
    cout << "---------------------------" << endl;
@@ -777,9 +779,18 @@ SCIP_RETCODE forward(
          SCIPfreeBufferArray(scip, &subcoef_old);
          break;
       }
+
+      end = clock();
+      cout << "time: " <<  (double)(end - start) / CLOCKS_PER_SEC << endl;
+      if( (double)(end - start) / CLOCKS_PER_SEC > TIMELIMIT )
+      {
+         SCIPfreeBufferArray(scip, &subX_old_);
+         SCIPfreeBufferArray(scip, &subcoef_old);
+         break;
+      }
    }
 
-   clock_t end = clock();
+   end = clock();
    int k = 0;
    {
 
@@ -1049,6 +1060,7 @@ SCIP_RETCODE backward(
    }
 
    clock_t start = clock();
+   clock_t end;
    /* alloc */
    SCIP_CALL( SCIPallocBufferArray(scip, &list, p1));
 
@@ -1101,7 +1113,7 @@ SCIP_RETCODE backward(
       memo = -1;
       mL = 1e+06;
 
-      cout << "[dim=" << dim << "] " << endl;
+      cout << "[dim=" << dim << "] ";
 #if debug
    cout << "[dim=" << dim << "] ";
    cout << "-------------------------" << endl;
@@ -1437,9 +1449,16 @@ SCIP_RETCODE backward(
          dim++;
          break;
       }
+
+      end = clock();
+      cout << "time: " <<  (double)(end - start) / CLOCKS_PER_SEC << endl;
+      if( (double)(end - start) / CLOCKS_PER_SEC > TIMELIMIT )
+      {
+         break;
+      }
    }
 
-   clock_t end = clock();
+   end = clock();
 
    {
 

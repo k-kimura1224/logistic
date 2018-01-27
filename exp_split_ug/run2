@@ -1,0 +1,53 @@
+#!/bin/sh
+#chmod u+x run.sh
+
+run1()
+{
+   num=$1
+	name=$2
+   echo " -- running ${name} -- "
+
+   rm -rf $name
+   mkdir $name
+
+   for i in `seq 0 9`
+   do
+      mkdir ${name}/${i}
+      for j in `seq 0 4`
+      do
+	      export OMP_NUMTHREADS=1
+	      ../bin/fscip ../settings/default_short.set ../../Split_data/output/${name}/${i}/${j}_sample_${name}.logreg -q -sth ${num} > ./${j}.log
+      done
+      mv *.prm *.sol *.status *_LC0 *.log ${name}/${i}
+   done
+}
+
+run2()
+{
+	export OMP_NUMTHREADS=1
+	#../bin/fscip ../settings/default.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+	../bin/fscip ../settings/noheur.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+	#../bin/fscip ../settings/nobranch.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+   #grep "Total Time" ${name}_LC0_T.status
+   #grep "Primal Bound" ${name}_LC0_T.status
+   #grep "Dual Bound" ${name}_LC0_T.status
+   #grep "Gap                :" ${name}_LC0_T.status
+}
+
+num=$1
+
+echo "** num of threads is $num **"
+echo ""
+
+rm -f *.prm
+rm -f *.sol
+rm -f *.status
+rm -f *_LC0
+rm -f *.log
+
+
+run1 ${num} pima-indians-diabetes
+#run1 ${num} biodeg
+#run ${num} musk2
+#run ${num} madelon_train
+

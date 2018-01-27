@@ -64,10 +64,10 @@ struct SCIP_ProbData
 
 /* check data */
 static
-SCIP_RETCODE checkData(
+SCIP_Bool checkData(
       int         n,
       int         p,
-      SCIP_Real* data
+      SCIP_Real*  y
       )
 {
    assert( n > p );
@@ -75,32 +75,27 @@ SCIP_RETCODE checkData(
 
    if( !( n > p && p > 0 ) )
    {
-      return SCIP_ERROR;
+      cout << "error: p > n" << endl;
+      exit(1);
    }
 
-   int i;
    int j;
-   int p1 = p+1;
    SCIP_Real buf;
 
-   for( i = 0; i < p1; i++ )
+   buf = y[0];
+   for( j = 0; j < n; j++ )
    {
-      buf = data[i];
+      if( fabs( buf - y[j] ) > 1.0e-6 )
+         break;
 
-      for( j = 0; j < n; j++ )
+      if( j == n - 1 )
       {
-         if( fabs( buf - data[j*p1 + i] ) > 1.0e-6 )
-            break;
-
-         if( j == n - 1 )
-         {
-            cout << "error: colmun= " << i << endl;
-            return SCIP_ERROR;
-         }
+         cout << "elements" << " are all " << buf << endl;
+         return FALSE;
       }
    }
 
-   return SCIP_OKAY;
+   return TRUE;
 }
 
 
@@ -424,6 +419,7 @@ SCIP_RETCODE createVariables(
 	int	p = probdata->p;
 	int	p1 = p+1;
 	char	varname[SCIP_MAXSTRLEN];
+   SCIP_Real* x = probdata->x;
 
 	assert(scip != NULL);
 	assert(probdata != NULL);
@@ -444,10 +440,20 @@ SCIP_RETCODE createVariables(
 		SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->b[i], varname,
 						-SCIPinfinity(scip), SCIPinfinity(scip),
 						-2 * probdata->coef_obj[i], SCIP_VARTYPE_CONTINUOUS));
+
 		// z: binary variables
 		(void) SCIPsnprintf(varname, SCIP_MAXSTRLEN, "z%d", i);
-		SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->z[i], varname,
+
+      if( i > 0 && checkData( n, p, &x[i*p1] ) == FALSE )
+      {
+		   SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->z[i], varname,
+						0.0, 0.0, probdata->penalcf, SCIP_VARTYPE_BINARY));
+      }
+      else
+      {
+		   SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->z[i], varname,
 						0.0, 1.0, probdata->penalcf, SCIP_VARTYPE_BINARY));
+      }
 	}
 
 	for(i=0; i<n; ++i){
@@ -1136,8 +1142,6 @@ SCIP_RETCODE SCIPprobdataCreate(
 	/* penalty coefficient */
 	probdata->penalcf = 2.0;
 
-   SCIP_CALL( checkData(n, p, data) );
-
    /* normalize data */
    SCIP_CALL( normalization(scip, n, p, i_ex, data) );
 
@@ -1146,6 +1150,12 @@ SCIP_RETCODE SCIPprobdataCreate(
 
    /* divide data into explained variable and explanatory variables */
    SCIP_CALL( divideData(n, p, i_ex, data, probdata->y, X) );
+
+   if( checkData(n, p, probdata->y) == FALSE )
+   {
+      return SCIP_ERROR;
+   }
+
 
 	SCIPfreeMemoryArrayNull( scip, &data);
 
@@ -1172,7 +1182,14 @@ SCIP_RETCODE SCIPprobdataCreate(
 
    /* calculate the number of linearly dependent sets */
    SCIP_CALL( SCIPgetNLineDependSet(scip, probdata->x, n, p+1, D) );
-   ndep = SCIPcalcIntSum(D, p+1);
+   //ndep = SCIPcalcIntSum(D, p+1);
+   ndep = 0;
+   for( i = 0; i < p + 1; i++)
+   {
+      if( D[i] == 1 || D[i] == 2 )
+         ndep++;
+   }
+
    probdata->ndep = ndep;
 
 	assert( ndep>=0 );
@@ -1181,10 +1198,10 @@ SCIP_RETCODE SCIPprobdataCreate(
 		SCIP_CALL( SCIPallocMemoryArray(scip, &probdata->Mdep, ndep));
 		ct = 0;
 
-		for(i=0; i<(p+1); ++i){
-			if( D[i]==1 ){
+		for(i=0; i<(p+1); ++i)
+      {
+			if( D[i]==1 || D[i] == 2 )
 				probdata->Mdep[ct++] = i;
-			}
 		}
 
 		SCIP_CALL( SCIPallocMemoryArray(scip, &probdata->groupX, ndep*(p+1)));
