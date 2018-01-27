@@ -12,8 +12,8 @@ branching/frequent/priority = 200000
 #branching/fullstrong_maic/priority = 200000
 
 # parameter for nodeselection
-nodeselection/restartdfs/stdpriority = 300000
-#nodeselection/bfs/stdpriority = 300000
+#nodeselection/restartdfs/stdpriority = 300000
+nodeselection/bfs/stdpriority = 300000
 
 # parameter for my heuristics
 heuristics/forward/freq = 100

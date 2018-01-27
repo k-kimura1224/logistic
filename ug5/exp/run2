@@ -10,10 +10,10 @@ run1()
 	../bin/fscip ../settings/large.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
 	#../bin/fscip ../settings/noheur.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
 	#../bin/fscip ../settings/nobranch.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
-   grep "Total Time" ${name}_LC0_T.status
-   grep "Primal Bound" ${name}_LC0_T.status
-   grep "Dual Bound" ${name}_LC0_T.status
-   grep "Gap                :" ${name}_LC0_T.status
+   #grep "Total Time" ${name}_LC0_T.status
+   #grep "Primal Bound" ${name}_LC0_T.status
+   #grep "Dual Bound" ${name}_LC0_T.status
+   #grep "Gap                :" ${name}_LC0_T.status
 }
 
 run2()
@@ -25,10 +25,10 @@ run2()
 	#../bin/fscip ../settings/default.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
 	../bin/fscip ../settings/noheur.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
 	#../bin/fscip ../settings/nobranch.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
-   grep "Total Time" ${name}_LC0_T.status
-   grep "Primal Bound" ${name}_LC0_T.status
-   grep "Dual Bound" ${name}_LC0_T.status
-   grep "Gap                :" ${name}_LC0_T.status
+   #grep "Total Time" ${name}_LC0_T.status
+   #grep "Primal Bound" ${name}_LC0_T.status
+   #grep "Dual Bound" ${name}_LC0_T.status
+   #grep "Gap                :" ${name}_LC0_T.status
 }
 
 num=$1
@@ -43,4 +43,7 @@ rm -f *_LC0
 rm -f *.log
 
 run1 ${num} madelon_train
-#run2 ${num} madelon_train
+run2 ${num} madelon_train
+
+run1 ${num} musk2
+run2 ${num} musk2
