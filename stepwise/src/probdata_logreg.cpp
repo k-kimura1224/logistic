@@ -425,6 +425,7 @@ SCIP_RETCODE forward(
       memo = -1;
       mL = SCIPinfinity(scip);
 
+   cout << "[dim=" << dim << "] ";
 #if debug
    cout << "[dim=" << dim << "] ";
    cout << "---------------------------" << endl;
@@ -860,7 +861,7 @@ SCIP_RETCODE forward(
       char filename[SCIP_MAXSTRLEN];
       (void) SCIPsnprintf( filename, SCIP_MAXSTRLEN, "%s_f.sol", probname);
 	   file = fopen(filename,"w");
-      SCIP_CALL( SCIPprintSol(scip, sol, file, true));
+      SCIP_CALL( SCIPprintSol(scip, sol, file, false));
 	   fclose(file);
       //SCIP_CALL( SCIPtrySolFree(scip, &sol, FALSE, FALSE, TRUE, TRUE, FALSE, &success) );
 
@@ -1100,6 +1101,7 @@ SCIP_RETCODE backward(
       memo = -1;
       mL = 1e+06;
 
+   cout << "[dim=" << dim << "] ";
 #if debug
    cout << "[dim=" << dim << "] ";
    cout << "-------------------------" << endl;
@@ -1515,7 +1517,7 @@ SCIP_RETCODE backward(
       char filename[SCIP_MAXSTRLEN];
       (void) SCIPsnprintf( filename, SCIP_MAXSTRLEN, "%s_b.sol", probname);
 	   file = fopen(filename,"w");
-      SCIP_CALL( SCIPprintSol(scip, sol, file, true));
+      SCIP_CALL( SCIPprintSol(scip, sol, file, false));
 	   fclose(file);
       //SCIP_CALL( SCIPtrySolFree(scip, &sol, FALSE, FALSE, TRUE, TRUE, FALSE, &success) );
 

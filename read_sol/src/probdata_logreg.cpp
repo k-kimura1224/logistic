@@ -234,6 +234,14 @@ SCIP_RETCODE newton(
 
    cout << "k: " << dimb << endl;
 
+   SCIP_Real AIC;
+   if( dimb == 0 )
+   {
+      AIC = 2 * n * log(2.0);
+      cout << "AIC: " << AIC << endl;
+      return SCIP_OKAY;
+   }
+
    // alloc
    SCIP_CALL( SCIPallocBufferArray(scip, &index_nonzero, dimb));
 
@@ -454,7 +462,7 @@ SCIP_RETCODE newton(
       objval = objval_new;
    }
 
-   SCIP_Real AIC = 2 * objval + penalcf * dimb;
+   AIC = 2 * objval + penalcf * dimb;
 
    cout << "AIC: " << AIC << endl;
 
