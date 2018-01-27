@@ -201,81 +201,52 @@ SCIP_RETCODE calcVariance(
    return SCIP_OKAY;
 }
 
+/** normalize data */
 static
-SCIP_Real calcBound(
-   const char*           sampledatafile,
-   int                   predict_p,
-   int*                  solvalint,
-   SCIP_Real*             solval
+SCIP_RETCODE normalization(
+   SCIP*                 scip,               /**< SCIP data structure */
+   int                   n,                  /**< the number of data points */
+   int                   p,                  /**< the number of explanatory variables */
+   int                   i_ex,
+   SCIP_Real*            data                /**< data points */
    )
 {
-   /* for sampledatafile */
-   int n;
-   int p;
-   int i_ex;
-   SCIP_Real* data;                  /**< array to store data */
-   SCIP_Real* y;                  /**< array to store data */
-   SCIP_Real* x;                  /**< array to store data */
+   int i;
+   int j;
+   SCIP_Real* mean;
+   SCIP_Real* variance;
 
-   /* read sampledatafile */
-   SCIP_CALL( readDataDim(sampledatafile, &n, &p, &i_ex));
+   assert(scip != NULL);
+   assert(n > 0);
+   assert(p > 0);
+   assert(data != NULL);
 
-   assert( p == predict_p );
-
-   /* allocate memory for data */
-   SCIP_CALL( SCIPallocMemoryArray(scip, &data, n * (p + 1)));
-
-   /* read data points */
-   SCIP_CALL( readData(sampledatafile, n, p, data));
-
-   /* allocate memory */
-   SCIP_CALL( SCIPallocMemoryArray(scip, &y, n));
-   SCIP_CALL( SCIPallocMemoryArray(scip, &x, n*(p+1)));
-
-   /* divide data into explained variable and explanatory variables */
-   SCIP_CALL( divideData(n, p, i_ex, data, y, x));
-
-   SCIPfreeMemoryArrayNull(scip, &data);
-   SCIPfreeMemoryArrayNull(scip, &y);
-   SCIPfreeMemoryArrayNull(scip, &x);
-}
-
-
-static
-SCIP_RETCODE calcMean_and_Variance(
-   const char*           sampledatafile,
-   int                   predict_p,
-   SCIP_Real*            mean,
-   SCIP_Real*            variance
-   )
-{
-
-   /* for sampledatafile */
-   int n;
-   int p;
-   int i_ex;
-   SCIP_Real* data;                  /**< array to store data */
-
-   /* read sampledatafile */
-   SCIP_CALL( readDataDim(sampledatafile, &n, &p, &i_ex));
-
-   assert( p == predict_p );
-
-   /* allocate memory for data */
-   SCIP_CALL( SCIPallocMemoryArray(scip, &data, n * (p + 1)));
-
-   /* read data points */
-   SCIP_CALL( readData(sampledatafile, n, p, data));
+   /* allocate memory for mean and variance */
+   SCIP_CALL( SCIPallocMemoryArray(scip, &mean, p + 1) );
+   SCIP_CALL( SCIPallocMemoryArray(scip, &variance, p + 1) );
 
    /* calculate the mean values and the variance values */
-   SCIP_CALL( calcMean(n, p, data, mean));
-   SCIP_CALL( calcVariance(n, p, data, mean, variance));
+   SCIP_CALL( calcMean(n, p, data, mean) );
+   SCIP_CALL( calcVariance(n, p, data, mean, variance) );
 
-   SCIPfreeMemoryArrayNull(scip, &data);
+   for( i = 0; i < n; i++ )
+   {
+      for( j = 0; j < p + 1; j++ )
+      {
+         if( j != i_ex - 1 )
+         {
+            if( !SCIPisEQ(scip, variance[j], 0.0) )
+               data[i * (p + 1) + j] = (data[i * (p + 1) + j] - mean[j]) / sqrt(variance[j]);
+         }
+      }
+   }
+
+   /* free */
+   SCIPfreeMemoryArrayNull(scip, &mean);
+   SCIPfreeMemoryArrayNull(scip, &variance);
 
    return SCIP_OKAY;
 }
-
 
 /** divide data into explained variable and explanatory variables */
 static
@@ -326,6 +297,381 @@ SCIP_RETCODE divideData(
    }
 
    assert( ct == n*(p+1) );
+   return SCIP_OKAY;
+}
+
+
+static
+SCIP_Real calcBound1(
+   SCIP* scip,
+   const char*           sampledatafile,
+   int                   predict_p,
+   int*                  solvalint,
+   SCIP_Real*             solval
+   )
+{
+   /* for sampledatafile */
+   int n;
+   int p;
+   int i_ex;
+   SCIP_Real* data;                  /**< array to store data */
+   SCIP_Real* y;                  /**< array to store data */
+   SCIP_Real* x;                  /**< array to store data */
+
+   /* read sampledatafile */
+   SCIP_CALL( readDataDim(sampledatafile, &n, &p, &i_ex));
+
+   assert( p == predict_p );
+
+   /* allocate memory for data */
+   SCIP_CALL( SCIPallocMemoryArray(scip, &data, n * (p + 1)));
+
+   /* read data points */
+   SCIP_CALL( readData(sampledatafile, n, p, data));
+
+   /* normalize data */
+   SCIP_CALL( normalization(scip, n, p, i_ex, data) );
+
+   /* allocate memory */
+   SCIP_CALL( SCIPallocMemoryArray(scip, &y, n));
+   SCIP_CALL( SCIPallocMemoryArray(scip, &x, n*(p+1)));
+
+   /* divide data into explained variable and explanatory variables */
+   SCIP_CALL( divideData(n, p, i_ex, data, y, x));
+
+   int TP, FP, FN, TN;
+   int i, j, t;
+   SCIP_Real bound;
+   SCIP_Real maxmin, min, best_bound;
+   SCIP_Real* pi;
+   SCIP_Real Sensitivity, Specificity;
+
+   SCIP_CALL( SCIPallocMemoryArray(scip, &pi, n));
+
+   for( i = 0; i < n; i++ )
+   {
+      pi[i] = 0.0;
+      for( j = 0; j < p+1; j++ )
+      {
+         if( solvalint[j] == 1 )
+         {
+            pi[i] += solval[j] * x[i*(p+1) + j];
+         }
+      }
+      pi[i] = 1.0 - ( 1.0 / ( 1.0 + exp( pi[i] ) ) );
+      cout << y[i] << ":" << pi[i] << endl;
+   }
+
+   maxmin = 0.0;
+   for( t = 1; t < 10; t++)
+   {
+      bound = t * 0.1;
+      TP = 0;
+      FP = 0;
+      FN = 0;
+      TN = 0;
+
+      for( i = 0; i < n; i++ )
+      {
+         if( SCIPisEQ(scip, y[i], 1.0) )
+         {
+            if( pi[i] >= bound )
+               TP++;
+            else
+               FN++;
+         }
+         else if( SCIPisEQ(scip, y[i], 0.0) )
+         {
+            if( pi[i] <= bound )
+               TN++;
+            else
+               FP++;
+         }
+         else
+         {
+            cout << "error:" << y[i] << endl;
+            exit(1);
+         }
+      }
+
+      Sensitivity = (double)TP/(TP+FN);
+      Specificity = (double)TN/(FP+TN);
+
+      cout << "bound:\t" << bound << endl;
+      printf("Sensitivity:\t%f\n", Sensitivity);
+      printf("Specificity:\t%f\n", Specificity);
+
+      if( Sensitivity > Specificity )
+         min = Specificity;
+      else
+         min = Sensitivity;
+
+      if( min > maxmin )
+      {
+         maxmin = min;
+         best_bound = bound;
+      }
+   }
+
+   SCIP_Real buf = best_bound;
+   for( t = -5; t <= 5; t++)
+   {
+      bound = buf + t * 0.02;
+      TP = 0;
+      FP = 0;
+      FN = 0;
+      TN = 0;
+
+      for( i = 0; i < n; i++ )
+      {
+         if( SCIPisEQ(scip, y[i], 1.0) )
+         {
+            if( pi[i] >= bound )
+               TP++;
+            else
+               FN++;
+         }
+         else if( SCIPisEQ(scip, y[i], 0.0) )
+         {
+            if( pi[i] <= bound )
+               TN++;
+            else
+               FP++;
+         }
+         else
+         {
+            cout << "error:" << y[i] << endl;
+            exit(1);
+         }
+      }
+
+      Sensitivity = (double)TP/(TP+FN);
+      Specificity = (double)TN/(FP+TN);
+
+      cout << "bound:\t" << bound << endl;
+      printf("Sensitivity:\t%f\n", Sensitivity);
+      printf("Specificity:\t%f\n", Specificity);
+
+      if( Sensitivity > Specificity )
+         min = Specificity;
+      else
+         min = Sensitivity;
+
+      if( min > maxmin )
+      {
+         maxmin = min;
+         best_bound = bound;
+      }
+   }
+
+
+   SCIPfreeMemoryArrayNull(scip, &data);
+   SCIPfreeMemoryArrayNull(scip, &y);
+   SCIPfreeMemoryArrayNull(scip, &x);
+   SCIPfreeMemoryArrayNull(scip, &pi);
+
+   return best_bound;
+}
+
+static
+SCIP_Real calcBound2(
+   SCIP* scip,
+   const char*           sampledatafile,
+   int                   predict_p,
+   int*                  solvalint,
+   SCIP_Real*             solval
+   )
+{
+   /* for sampledatafile */
+   int n;
+   int p;
+   int i_ex;
+   SCIP_Real* data;                  /**< array to store data */
+   SCIP_Real* y;                  /**< array to store data */
+   SCIP_Real* x;                  /**< array to store data */
+
+   /* read sampledatafile */
+   SCIP_CALL( readDataDim(sampledatafile, &n, &p, &i_ex));
+
+   assert( p == predict_p );
+
+   /* allocate memory for data */
+   SCIP_CALL( SCIPallocMemoryArray(scip, &data, n * (p + 1)));
+
+   /* read data points */
+   SCIP_CALL( readData(sampledatafile, n, p, data));
+
+   /* normalize data */
+   SCIP_CALL( normalization(scip, n, p, i_ex, data) );
+
+   /* allocate memory */
+   SCIP_CALL( SCIPallocMemoryArray(scip, &y, n));
+   SCIP_CALL( SCIPallocMemoryArray(scip, &x, n*(p+1)));
+
+   /* divide data into explained variable and explanatory variables */
+   SCIP_CALL( divideData(n, p, i_ex, data, y, x));
+
+   int TP, FP, FN, TN;
+   int i, j, t;
+   SCIP_Real bound;
+   SCIP_Real max, sum, best_bound;
+   SCIP_Real* pi;
+   SCIP_Real Sensitivity, Specificity;
+
+   SCIP_CALL( SCIPallocMemoryArray(scip, &pi, n));
+
+   for( i = 0; i < n; i++ )
+   {
+      pi[i] = 0.0;
+      for( j = 0; j < p+1; j++ )
+      {
+         if( solvalint[j] == 1 )
+         {
+            pi[i] += solval[j] * x[i*(p+1) + j];
+         }
+      }
+      pi[i] = 1.0 - ( 1.0 / ( 1.0 + exp( pi[i] ) ) );
+      cout << y[i] << ":" << pi[i] << endl;
+   }
+
+   max = 0.0;
+   for( t = 1; t < 10; t++)
+   {
+      bound = t * 0.1;
+      TP = 0;
+      FP = 0;
+      FN = 0;
+      TN = 0;
+
+      for( i = 0; i < n; i++ )
+      {
+         if( SCIPisEQ(scip, y[i], 1.0) )
+         {
+            if( pi[i] >= bound )
+               TP++;
+            else
+               FN++;
+         }
+         else if( SCIPisEQ(scip, y[i], 0.0) )
+         {
+            if( pi[i] <= bound )
+               TN++;
+            else
+               FP++;
+         }
+         else
+         {
+            cout << "error:" << y[i] << endl;
+            exit(1);
+         }
+      }
+
+      Sensitivity = (double)TP/(TP+FN);
+      Specificity = (double)TN/(FP+TN);
+
+      cout << "bound:\t" << bound << endl;
+      printf("Sensitivity:\t%f\n", Sensitivity);
+      printf("Specificity:\t%f\n", Specificity);
+
+      sum = Specificity + Sensitivity;
+
+      if( sum > max )
+      {
+         max = sum;
+         best_bound = bound;
+      }
+   }
+
+   SCIP_Real buf = best_bound;
+   for( t = -5; t <= 5; t++)
+   {
+      bound = buf + t * 0.02;
+      TP = 0;
+      FP = 0;
+      FN = 0;
+      TN = 0;
+
+      for( i = 0; i < n; i++ )
+      {
+         if( SCIPisEQ(scip, y[i], 1.0) )
+         {
+            if( pi[i] >= bound )
+               TP++;
+            else
+               FN++;
+         }
+         else if( SCIPisEQ(scip, y[i], 0.0) )
+         {
+            if( pi[i] <= bound )
+               TN++;
+            else
+               FP++;
+         }
+         else
+         {
+            cout << "error:" << y[i] << endl;
+            exit(1);
+         }
+      }
+
+      Sensitivity = (double)TP/(TP+FN);
+      Specificity = (double)TN/(FP+TN);
+
+      cout << "bound:\t" << bound << endl;
+      printf("Sensitivity:\t%f\n", Sensitivity);
+      printf("Specificity:\t%f\n", Specificity);
+
+      sum = Specificity + Sensitivity;
+
+      if( sum > max )
+      {
+         max = sum;
+         best_bound = bound;
+      }
+   }
+
+
+   SCIPfreeMemoryArrayNull(scip, &data);
+   SCIPfreeMemoryArrayNull(scip, &y);
+   SCIPfreeMemoryArrayNull(scip, &x);
+   SCIPfreeMemoryArrayNull(scip, &pi);
+
+   return best_bound;
+}
+
+
+static
+SCIP_RETCODE calcMean_and_Variance(
+   const char*           sampledatafile,
+   int                   predict_p,
+   SCIP_Real*            mean,
+   SCIP_Real*            variance
+   )
+{
+
+   /* for sampledatafile */
+   int n;
+   int p;
+   int i_ex;
+   SCIP_Real* data;                  /**< array to store data */
+
+   /* read sampledatafile */
+   SCIP_CALL( readDataDim(sampledatafile, &n, &p, &i_ex));
+
+   assert( p == predict_p );
+
+   /* allocate memory for data */
+   SCIP_CALL( SCIPallocMemoryArray(scip, &data, n * (p + 1)));
+
+   /* read data points */
+   SCIP_CALL( readData(sampledatafile, n, p, data));
+
+   /* calculate the mean values and the variance values */
+   SCIP_CALL( calcMean(n, p, data, mean));
+   SCIP_CALL( calcVariance(n, p, data, mean, variance));
+
+   SCIPfreeMemoryArrayNull(scip, &data);
+
    return SCIP_OKAY;
 }
 
@@ -566,7 +912,10 @@ SCIP_RETCODE run(
       TN = 0;
 
       SCIP_Real pi;
-      SCIP_Real bound = calcBound(sampledatafile, p, solvalint, solval);
+      //SCIP_Real bound = calcBound1(scip, sampledatafile, p, solvalint, solval);
+      //SCIP_Real bound = calcBound2(scip, sampledatafile, p, solvalint, solval);
+      SCIP_Real bound = 0.5;
+      cout << "bound: " << bound << endl;
 
       for( i = 0; i < n; i++ )
       {
@@ -582,20 +931,20 @@ SCIP_RETCODE run(
          pi = 1.0 - ( 1.0 / ( 1.0 + exp( sum ) ) );
          //cout << y[i] << ":" << pi << endl;
 
-         if( y[i] == 1.0 )
+         if( SCIPisEQ(scip, y[i], 1.0) )
          {
             /* POSITVE */
 
-            if( pi >= 0.4 )
+            if( pi >= bound )
                TP++;
             else
                FN++;
          }
-         else if( y[i] == 0.0 )
+         else if( SCIPisEQ(scip, y[i], 0.0) )
          {
             /* NEGATIVE */
 
-            if( pi <= 0.4 )
+            if( pi <= bound )
                TN++;
             else
                FP++;
