@@ -36,7 +36,7 @@
 #define bigM				300.0
 #define MP_WARM 1
 #define debug 0
-#define TIMELIMIT 5000
+#define TIMELIMIT 5
 using namespace std;
 
 struct SCIP_ProbData
@@ -72,10 +72,10 @@ struct SCIP_ProbData
 
 /* check data */
 static
-SCIP_RETCODE checkData(
+SCIP_Bool checkData(
       int         n,
       int         p,
-      SCIP_Real* data
+      SCIP_Real* y
       )
 {
    assert( n > p );
@@ -83,32 +83,26 @@ SCIP_RETCODE checkData(
 
    if( !( n > p && p > 0 ) )
    {
-      return SCIP_ERROR;
+      cout << "error: p > n" << endl;
+      exit(1);
    }
 
-   int i;
    int j;
-   int p1 = p+1;
-   SCIP_Real buf;
+   SCIP_Real buf = y[0];
 
-   for( i = 0; i < p1; i++ )
+   for( j = 0; j < n; j++ )
    {
-      buf = data[i];
+      if( fabs( buf - y[j] ) > 1.0e-6 )
+         break;
 
-      for( j = 0; j < n; j++ )
+      if( j == n - 1 )
       {
-         if( fabs( buf - data[j*p1 + i] ) > 1.0e-6 )
-            break;
-
-         if( j == n - 1 )
-         {
-            cout << "error: colmun= " << i << endl;
-            return SCIP_ERROR;
-         }
+         cout << "elements" << " are all " << buf << endl;
+         return FALSE;
       }
    }
 
-   return SCIP_OKAY;
+   return TRUE;
 }
 
 
@@ -627,9 +621,11 @@ SCIP_RETCODE forward(
                   }
                   else
                   {
-                     exit(1);
-                     info = SCIPclapackDgesv( scip, A_, q, dim, d);
-                     if( info != 0 ) exit(1);
+                     assert(0);
+                     objval = SCIPinfinity(scip);
+                     break;
+                     //info = SCIPclapackDgesv( scip, A_, q, dim, d);
+                     //if( info != 0 ) exit(1);
                   }
                }
 
@@ -1107,6 +1103,7 @@ SCIP_RETCODE backward(
 
    // backward selection
    // mark
+   int ct_error;
    while(1)
    {
       dim--;
@@ -1257,6 +1254,7 @@ SCIP_RETCODE backward(
             objval = - Loglikelifood_( scip, n, dim, subcoef, Xb, point);
             assert( objval < SCIPinfinity(scip) );
 
+            ct_error = 0;
             while(1)
             {
                // step1: find a descent direction by solving Ad = q
@@ -1295,14 +1293,25 @@ SCIP_RETCODE backward(
 
                if( info != 0 )
                {
-                  //mydcopy_( q, d, dim);
-                  for( j = 0; j < dim; j++ )
-                     point[j] = 0.0;
+                  assert( ct_error == 1 || ct_error == 0 );
+                  if( ct_error == 0 )
+                  {
+                     for( j = 0; j < dim; j++ )
+                        point[j] = 0.0;
 
-                  SCIP_CALL( SCIPcblasDgemv2( subX_, n, dim, point, Xb) );
-                  objval = - Loglikelifood_( scip, n, dim, subcoef, Xb, point);
-                  continue;
-
+                     SCIP_CALL( SCIPcblasDgemv2( subX_, n, dim, point, Xb) );
+                     objval = - Loglikelifood_( scip, n, dim, subcoef, Xb, point);
+                     ct_error++;
+                     continue;
+                  }
+                  else
+                  {
+                     assert(0);
+                     objval = SCIPinfinity(scip);
+                     break;
+                     //info = SCIPclapackDgesv( scip, A_, q, dim, d);
+                     //if( info != 0 ) exit(1);
+                  }
                }
 
                // step2: find the stepsize
@@ -1793,6 +1802,7 @@ SCIP_RETCODE createVariables(
 	int	p = probdata->p;
 	int	p1 = p+1;
 	char	varname[SCIP_MAXSTRLEN];
+   SCIP_Real* x = probdata->x;
 
 	assert(scip != NULL);
 	assert(probdata != NULL);
@@ -1815,8 +1825,17 @@ SCIP_RETCODE createVariables(
 						-2 * probdata->coef_obj[i], SCIP_VARTYPE_CONTINUOUS));
 		// z: binary variables
 		(void) SCIPsnprintf(varname, SCIP_MAXSTRLEN, "z%d", i);
-		SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->z[i], varname,
+
+      if( i > 0 && checkData( n, p, &x[i*p1] ) == FALSE )
+      {
+		   SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->z[i], varname,
+						0.0, 0.0, probdata->penalcf, SCIP_VARTYPE_BINARY));
+      }
+      else
+      {
+		   SCIP_CALL( SCIPcreateVarBasic( scip, &probdata->z[i], varname,
 						0.0, 1.0, probdata->penalcf, SCIP_VARTYPE_BINARY));
+      }
 	}
 
 	for(i=0; i<n; ++i){
@@ -2505,8 +2524,6 @@ SCIP_RETCODE SCIPprobdataCreate(
 	/* penalty coefficient */
 	probdata->penalcf = 2.0;
 
-   SCIP_CALL( checkData(n, p, data) );
-
    /* normalize data */
    SCIP_CALL( normalization(scip, n, p, i_ex, data) );
 
@@ -2516,8 +2533,12 @@ SCIP_RETCODE SCIPprobdataCreate(
    /* divide data into explained variable and explanatory variables */
    SCIP_CALL( divideData(n, p, i_ex, data, probdata->y, X) );
 
-	SCIPfreeMemoryArrayNull( scip, &data);
+   if( checkData(n, p, probdata->y) == FALSE )
+   {
+      return SCIP_ERROR;
+   }
 
+	SCIPfreeMemoryArrayNull( scip, &data);
 
 	/* output information of problem */
 	SCIPinfoMessage( scip, NULL, "File name\t:\t%s\n", filename);
@@ -2541,7 +2562,14 @@ SCIP_RETCODE SCIPprobdataCreate(
 
    /* calculate the number of linearly dependent sets */
    SCIP_CALL( SCIPgetNLineDependSet(scip, probdata->x, n, p+1, D) );
-   ndep = SCIPcalcIntSum(D, p+1);
+   //ndep = SCIPcalcIntSum(D, p+1);
+   ndep = 0;
+   for( i = 0; i < p + 1; i++)
+   {
+      if( D[i] == 1 || D[i] == 2 )
+         ndep++;
+   }
+
    probdata->ndep = ndep;
 
 	assert( ndep>=0 );
@@ -2551,9 +2579,8 @@ SCIP_RETCODE SCIPprobdataCreate(
 		ct = 0;
 
 		for(i=0; i<(p+1); ++i){
-			if( D[i]==1 ){
+			if( D[i]==1 || D[i] == 2 )
 				probdata->Mdep[ct++] = i;
-			}
 		}
 
 		SCIP_CALL( SCIPallocMemoryArray(scip, &probdata->groupX, ndep*(p+1)));

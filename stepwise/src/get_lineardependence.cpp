@@ -34,6 +34,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 /** calclulate the number of linearly dependent sets from among colmun vectors */
@@ -127,6 +128,7 @@ SCIP_RETCODE SCIPgetNLineDependSet(
 
    add = 1;
 
+   SCIP_Real buf;
    /* find linearly dependent setes */
    for( i = memo + 1; i < m; i++ )
    {
@@ -169,6 +171,18 @@ SCIP_RETCODE SCIPgetNLineDependSet(
          }
          SCIP_CALL( SCIPcblasCopy(vector_q, newinvmatrix + (rank * (rank - 1)), rank - 1) );
          newinvmatrix[(rank * rank) - 1] = scalar_r;
+      }
+
+      buf = origmatrix[i*n];
+      for( j = 0; j < n; j++ )
+      {
+         if( fabs( buf - origmatrix[i*n + j] ) > 1.0e-6 )
+            break;
+      }
+      if( j == n )
+      {
+         result[i] = 2;
+         continue;
       }
 
       /* compute c, new a and new b
@@ -281,6 +295,14 @@ SCIP_RETCODE SCIPgetLineDependSet(
    {
       if( i == maxdep[ct1] && rank > 1 )
       {
+         if( ldindex[i] == 2 )
+         {
+            ct1++;
+            if( ct1 == ndep )
+               break;
+            else
+               continue;
+         }
          /*
           * solve this linear system: submatrix x = d
           */

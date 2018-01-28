@@ -790,7 +790,8 @@ SCIP_RETCODE run(
    const char*           sampledatafile,
    const char*           predictdatafile,
    const char*           solutionfile,
-   const char*           outputfile
+   const char*           outputfile,
+   int                   para
    )
 {
    SCIP* scip = NULL;
@@ -912,9 +913,20 @@ SCIP_RETCODE run(
       TN = 0;
 
       SCIP_Real pi;
-      //SCIP_Real bound = calcBound1(scip, sampledatafile, p, solvalint, solval);
-      //SCIP_Real bound = calcBound2(scip, sampledatafile, p, solvalint, solval);
-      SCIP_Real bound = 0.5;
+
+      SCIP_Real bound = 0.0;
+      if( para == 1 )
+         bound = calcBound1(scip, sampledatafile, p, solvalint, solval);
+      else if ( para == 2 )
+         bound = calcBound2(scip, sampledatafile, p, solvalint, solval);
+      else if ( para == 3 )
+         bound = 0.5;
+      else
+      {
+         cout << "error:" << para << endl;
+         return SCIP_ERROR;
+      }
+
       cout << "bound: " << bound << endl;
 
       for( i = 0; i < n; i++ )
@@ -998,13 +1010,13 @@ main(
 {
    SCIP_RETCODE retcode;
 
-   if( argc != 5 )
+   if( argc != 6 )
    {
-      printf("Usage:prediction sampledata predictdata solution output\n");
+      printf("Usage:prediction sampledata predictdata solution output parameter_of_bound\n");
       return -1;
    }
 
-   retcode = run(argc, argv[1], argv[2], argv[3], argv[4]);
+   retcode = run(argc, argv[1], argv[2], argv[3], argv[4], atoi(argv[5]));
    if( retcode != SCIP_OKAY )
    {
       SCIPprintError(retcode);
