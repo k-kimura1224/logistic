@@ -24,8 +24,8 @@ NChangeIntoCollectingModeNSolvers = FALSE
 NChangeIntoCollectingMode = 1
 DualBoundGainTest = FALSE
 
-SolverSettingsAtRootNode = "../settings/keiji_logreg_medium1.set"
-SolverSettingsExceptRootNode = "../settings/keiji_logreg_medium2.set"
+SolverSettingsAtRootNode = "../settings/keiji_logreg_medium.set"
+SolverSettingsExceptRootNode = "../settings/keiji_logreg_medium.set"
 
 #SolverSettingsAtRootNode = "../settings/no_presolve.set"
 #SolverSettingsExceptRootNode = "../settings/no_presolve.set"

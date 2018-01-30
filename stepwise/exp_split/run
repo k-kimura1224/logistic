@@ -11,7 +11,7 @@ run()
       mkdir ${name}/${i}
       for j in `seq 0 4`
       do
-	      export OMP_NUMTHREADS=1
+	      export OMP_NUM_THREADS=1
 	      ../bin/scip -f ../../Split_data/output/${name}/${i}/${j}_sample_${name}.logreg  > ./${j}.log
       done
       mv *.sol *.log ${name}/${i}
@@ -21,4 +21,4 @@ run()
 rm -f *.sol
 rm -f *.log
 
-run musk2
+run madelon_train
