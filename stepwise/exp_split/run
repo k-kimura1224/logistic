@@ -21,4 +21,7 @@ run()
 rm -f *.sol
 rm -f *.log
 
-run musk2
+run parkin
+run seismic-bumps
+run statG
+run statH

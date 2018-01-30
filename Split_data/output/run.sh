@@ -25,6 +25,9 @@ r=9
 #do
 #   generate $file $k $r
 #done
+generate ../../data/parkin.logreg $k $r
+generate ../../data/statH.logreg $k $r
 generate ../../data/biodeg.logreg $k $r
+generate ../../data/breast.logreg $k $r
 
 

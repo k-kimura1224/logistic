@@ -1,0 +1,66 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/spectf/4/3_sample_spectf.logreg>
+============
+
+File name	:	../../Split_data/output/spectf/4/3_sample_spectf.logreg
+Problem name 	:	3_sample_spectf
+Number of data	:	214
+Number of var	:	44
+The given data has linear independence
+
+[dim=1] time: 0.008458
+[dim=2] time: 0.017086
+[dim=3] time: 0.025047
+[dim=4] time: 0.032018
+[dim=5] time: 0.039095
+[dim=6] time: 0.045877
+[dim=7] time: 0.052724
+[dim=8] time: 0.060581
+[dim=9] time: 0.068326
+[dim=10] Time of forward = 0.074212sec.
+AIC: 148.306
+k: 9
+
+[dim=44] time: 0.028324
+[dim=43] time: 0.049436
+[dim=42] time: 0.066452
+[dim=41] time: 0.082643
+[dim=40] time: 0.098114
+[dim=39] time: 0.113035
+[dim=38] time: 0.133447
+[dim=37] time: 0.149284
+[dim=36] time: 0.162015
+[dim=35] time: 0.173593
+[dim=34] time: 0.191676
+[dim=33] time: 0.204311
+[dim=32] time: 0.215923
+[dim=31] time: 0.227614
+[dim=30] time: 0.236908
+[dim=29] time: 0.247163
+[dim=28] time: 0.258009
+[dim=27] time: 0.266093
+[dim=26] time: 0.27522
+[dim=25] time: 0.282789
+[dim=24] time: 0.28917
+[dim=23] time: 0.297356
+[dim=22] time: 0.303599
+[dim=21] time: 0.310747
+[dim=20] time: 0.317184
+[dim=19] time: 0.322826
+[dim=18] time: 0.328326
+[dim=17] time: 0.332378
+[dim=16] time: 0.336353
+[dim=15] time: 0.340269
+[dim=14] Time of backward = 0.343758sec.
+AIC: 145.122
+k: 15

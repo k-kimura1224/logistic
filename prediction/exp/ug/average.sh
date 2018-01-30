@@ -42,3 +42,9 @@ echo "-- musk2 ---------"
 run para_1/musk2
 run para_2/musk2
 run para_3/musk2
+
+echo ""
+echo "-- madelon_train ---------"
+run para_1/madelon_train
+run para_2/madelon_train
+run para_3/madelon_train

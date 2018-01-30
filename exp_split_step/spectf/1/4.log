@@ -1,0 +1,61 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/spectf/1/4_sample_spectf.logreg>
+============
+
+File name	:	../../Split_data/output/spectf/1/4_sample_spectf.logreg
+Problem name 	:	4_sample_spectf
+Number of data	:	214
+Number of var	:	44
+The given data has linear independence
+
+[dim=1] time: 0.008307
+[dim=2] time: 0.017113
+[dim=3] time: 0.025394
+[dim=4] time: 0.03293
+[dim=5] time: 0.041833
+[dim=6] time: 0.049825
+[dim=7] time: 0.057681
+[dim=8] time: 0.066049
+[dim=9] time: 0.073252
+[dim=10] time: 0.08023
+[dim=11] time: 0.087351
+[dim=12] time: 0.093069
+[dim=13] time: 0.098905
+[dim=14] time: 0.104559
+[dim=15] time: 0.110058
+[dim=16] Time of forward = 0.114917sec.
+AIC: 135.467
+k: 15
+
+[dim=44] time: 0.037093
+[dim=43] time: 0.051431
+[dim=42] time: 0.075215
+[dim=41] time: 0.088861
+[dim=40] time: 0.106134
+[dim=39] time: 0.117351
+[dim=38] time: 0.128424
+[dim=37] time: 0.140258
+[dim=36] time: 0.152606
+[dim=35] time: 0.165141
+[dim=34] time: 0.177165
+[dim=33] time: 0.190586
+[dim=32] time: 0.201524
+[dim=31] time: 0.214096
+[dim=30] time: 0.226643
+[dim=29] time: 0.234983
+[dim=28] time: 0.245097
+[dim=27] time: 0.254369
+[dim=26] time: 0.264162
+[dim=25] Time of backward = 0.273363sec.
+AIC: 135.661
+k: 26

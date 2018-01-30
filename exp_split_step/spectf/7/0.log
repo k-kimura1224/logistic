@@ -1,0 +1,66 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/spectf/7/0_sample_spectf.logreg>
+============
+
+File name	:	../../Split_data/output/spectf/7/0_sample_spectf.logreg
+Problem name 	:	0_sample_spectf
+Number of data	:	214
+Number of var	:	44
+The given data has linear independence
+
+[dim=1] time: 0.011739
+[dim=2] time: 0.020004
+[dim=3] time: 0.028117
+[dim=4] time: 0.035209
+[dim=5] time: 0.041991
+[dim=6] time: 0.048789
+[dim=7] time: 0.05542
+[dim=8] time: 0.061619
+[dim=9] time: 0.067919
+[dim=10] time: 0.07383
+[dim=11] time: 0.079615
+[dim=12] time: 0.08517
+[dim=13] Time of forward = 0.090476sec.
+AIC: 145.369
+k: 12
+
+[dim=44] time: 0.033921
+[dim=43] time: 0.048997
+[dim=42] time: 0.074797
+[dim=41] time: 0.090388
+[dim=40] time: 0.107653
+[dim=39] time: 0.130644
+[dim=38] time: 0.149217
+[dim=37] time: 0.163962
+[dim=36] time: 0.17546
+[dim=35] time: 0.187347
+[dim=34] time: 0.199963
+[dim=33] time: 0.213032
+[dim=32] time: 0.225567
+[dim=31] time: 0.237547
+[dim=30] time: 0.249512
+[dim=29] time: 0.26094
+[dim=28] time: 0.269785
+[dim=27] time: 0.277846
+[dim=26] time: 0.285306
+[dim=25] time: 0.292159
+[dim=24] time: 0.299789
+[dim=23] time: 0.306368
+[dim=22] time: 0.314965
+[dim=21] time: 0.323078
+[dim=20] time: 0.328486
+[dim=19] time: 0.335811
+[dim=18] time: 0.34739
+[dim=17] Time of backward = 0.352611sec.
+AIC: 142.039
+k: 18

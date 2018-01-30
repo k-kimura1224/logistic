@@ -1,0 +1,71 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/spectf/6/1_sample_spectf.logreg>
+============
+
+File name	:	../../Split_data/output/spectf/6/1_sample_spectf.logreg
+Problem name 	:	1_sample_spectf
+Number of data	:	214
+Number of var	:	44
+The given data has linear independence
+
+[dim=1] time: 0.00841
+[dim=2] time: 0.016841
+[dim=3] time: 0.024752
+[dim=4] time: 0.03174
+[dim=5] time: 0.039234
+[dim=6] time: 0.046356
+[dim=7] time: 0.053514
+[dim=8] time: 0.060514
+[dim=9] time: 0.06714
+[dim=10] time: 0.074256
+[dim=11] time: 0.083507
+[dim=12] time: 0.092774
+[dim=13] time: 0.099149
+[dim=14] time: 0.105217
+[dim=15] time: 0.11086
+[dim=16] time: 0.116133
+[dim=17] Time of forward = 0.121159sec.
+AIC: 138.546
+k: 16
+
+[dim=44] time: 0.032238
+[dim=43] time: 0.056797
+[dim=42] time: 0.072563
+[dim=41] time: 0.090249
+[dim=40] time: 0.105498
+[dim=39] time: 0.123148
+[dim=38] time: 0.137525
+[dim=37] time: 0.151516
+[dim=36] time: 0.164773
+[dim=35] time: 0.177264
+[dim=34] time: 0.187955
+[dim=33] time: 0.201181
+[dim=32] time: 0.213631
+[dim=31] time: 0.226533
+[dim=30] time: 0.237248
+[dim=29] time: 0.245446
+[dim=28] time: 0.256162
+[dim=27] time: 0.265789
+[dim=26] time: 0.273647
+[dim=25] time: 0.282319
+[dim=24] time: 0.289434
+[dim=23] time: 0.296516
+[dim=22] time: 0.304605
+[dim=21] time: 0.311883
+[dim=20] time: 0.317382
+[dim=19] time: 0.321558
+[dim=18] time: 0.325703
+[dim=17] time: 0.329821
+[dim=16] Time of backward = 0.335543sec.
+AIC: 136.732
+k: 17
