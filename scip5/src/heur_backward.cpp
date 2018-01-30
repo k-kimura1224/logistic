@@ -523,6 +523,7 @@ SCIP_DECL_HEUREXEC(heurExecBackward)
                   else
                   {
                      objval = SCIPinfinity(scip);
+                     ct_error++;
                      break;
                   }
                }
@@ -569,7 +570,7 @@ SCIP_DECL_HEUREXEC(heurExecBackward)
 
             }//while
 
-            if( MP_MAXPOOL > 0 ){
+            if( MP_MAXPOOL > 1 && ct_error <= 1 ){
                ct=0;
                for(j=0; j<p1; j++){
                   if( solval_01[j] == 1 ){

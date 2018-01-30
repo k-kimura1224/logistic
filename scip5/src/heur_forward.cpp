@@ -626,6 +626,7 @@ SCIP_DECL_HEUREXEC(heurExecForward)
                   {
                      assert(0);
                      objval = SCIPinfinity(scip);
+                     ct_error++;
                      break;
                      //info = SCIPclapackDgesv( scip, A_, q, dim, d);
                      //if( info != 0 ) exit(1);
@@ -661,7 +662,7 @@ SCIP_DECL_HEUREXEC(heurExecForward)
             }// while
 
             // store to the pool
-            if( MP_MAXPOOL > 0 )
+            if( MP_MAXPOOL > 0 && ct_error <=1 )
             {
                for( j = 0; j < p1; j++ )
                {

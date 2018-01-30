@@ -1,0 +1,51 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/breast/8/1_sample_breast.logreg>
+============
+
+File name	:	../../Split_data/output/breast/8/1_sample_breast.logreg
+Problem name 	:	1_sample_breast
+Number of data	:	155
+Number of var	:	33
+The given data has linear dependence
+16 sets of column vector are linearly dependent:
+elements are all 0
+elements are all 0
+elements are all 0
+elements are all 0
+elements are all 0
+elements are all 0
+
+[dim=1] time: 0.002818
+[dim=2] time: 0.006833
+[dim=3] time: 0.01042
+[dim=4] time: 0.012963
+[dim=5] time: 0.015084
+[dim=6] time: 0.017295
+[dim=7] Time of forward = 0.01975sec.
+AIC: 152.634
+k: 6
+
+[dim=17] time: 0.007522
+[dim=16] time: 0.010016
+[dim=15] time: 0.01258
+[dim=14] time: 0.014525
+[dim=13] time: 0.016625
+[dim=12] time: 0.020005
+[dim=11] time: 0.022002
+[dim=10] time: 0.023999
+[dim=9] time: 0.025855
+[dim=8] time: 0.027328
+[dim=7] time: 0.028645
+[dim=6] Time of backward = 0.029787sec.
+AIC: 150.306
+k: 7

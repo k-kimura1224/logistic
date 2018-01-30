@@ -36,7 +36,7 @@
 #define bigM				300.0
 #define MP_WARM 1
 #define debug 0
-#define TIMELIMIT 5
+#define TIMELIMIT 2000
 using namespace std;
 
 struct SCIP_ProbData
@@ -248,7 +248,9 @@ SCIP_RETCODE forward(
    SCIP_CALL( SCIPinitIntArrayZero( 3*p1, branchinfo ) );
 
    for(i=0; i<p1; ++i){
-      branchinfo[p1 + i]  =  1;
+      int ublb              =  SCIPround(scip, SCIPcomputeVarUbLocal(scip, var_z[i])
+                        +  SCIPcomputeVarLbLocal(scip, var_z[i]));
+      branchinfo[ublb*p1 + i]  =  1;
    }
    // }} get branching info
 
@@ -623,6 +625,7 @@ SCIP_RETCODE forward(
                   {
                      assert(0);
                      objval = SCIPinfinity(scip);
+                     ct_error++;
                      break;
                      //info = SCIPclapackDgesv( scip, A_, q, dim, d);
                      //if( info != 0 ) exit(1);
@@ -658,7 +661,7 @@ SCIP_RETCODE forward(
             }// while
 
             // store to the pool
-            if( MP_MAXPOOL > 0 )
+            if( MP_MAXPOOL > 0 && ct_error <=1 )
             {
                for( j = 0; j < p1; j++ )
                {
@@ -1308,6 +1311,7 @@ SCIP_RETCODE backward(
                   {
                      assert(0);
                      objval = SCIPinfinity(scip);
+                     ct_error++;
                      break;
                      //info = SCIPclapackDgesv( scip, A_, q, dim, d);
                      //if( info != 0 ) exit(1);
@@ -1356,7 +1360,7 @@ SCIP_RETCODE backward(
 
             }//while
 
-            if( MP_MAXPOOL > 0 ){
+            if( MP_MAXPOOL > 0 && ct_error <= 1 ){
                ct=0;
                for(j=0; j<p1; j++){
                   if( solval_01[j] == 1 ){

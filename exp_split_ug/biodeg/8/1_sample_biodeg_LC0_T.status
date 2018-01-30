@@ -1,0 +1,29 @@
+                               Nodes    Active                                            
+     Time          Nodes        Left   Solvers     Best Integer        Best Node       Gap     Best Node(S)    Gap(S)
+*       1              0           1         1         547.3385                -         -                -         -
+*       2              0           1         1         515.1226                -         -                -         -
+*       4              0           1         1         514.3573                -         -                -         -
+        6              6           1         1         514.3573         467.3385    10.06%         467.3385     10.06%
+       11             21           6         6         514.3573         469.3385     9.59%         469.3385      9.59%
+       16             82          21        16         514.3573         473.3385     8.67%         473.3385      8.67%
+       22           1699          97        14         514.3573         480.3659     7.08%         480.3659      7.08%
+       27           2375          85        14         514.3573         481.4994     6.82%         481.4994      6.82%
+       32           3111          69         9         514.3573         481.4994     6.82%         481.4994      6.82%
+Limit number of collecting mode solvers extends to 2 after 33.37 seconds.
+       38           4435          51         6         514.3573         485.4994     5.94%         485.4994      5.94%
+       43           6450          80         3         514.3573         491.4994     4.65%         491.4994      4.65%
+Limit number of collecting mode solvers extends to 3 after 43.41 seconds.
+       48           8721         192        16         514.3573         495.4994     3.81%         495.4994      3.81%
+       53          11970         151        16         514.3573         506.7543     1.50%         506.7543      1.50%
+       57          13822           0         0         514.3573                -         -                -
+SCIP Status        : problem is solved
+Total Time         : 57.1300
+  solving          : 57.1300
+  presolving       : 0.0133 (included in solving)
+B&B Tree           :
+  nodes (total)    : 13822
+Solution           :
+  Solutions found  : 3
+  Primal Bound     : +5.14357347121316e+02
+  Dual Bound       : +5.14357347121315e+02
+Gap                : 0.00000 %
