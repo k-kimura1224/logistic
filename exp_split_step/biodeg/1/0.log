@@ -1,0 +1,70 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/biodeg/1/0_sample_biodeg.logreg>
+============
+
+File name	:	../../Split_data/output/biodeg/1/0_sample_biodeg.logreg
+Problem name 	:	0_sample_biodeg
+Number of data	:	844
+Number of var	:	41
+The given data has linear independence
+
+[dim=1] time: 0.029861
+[dim=2] time: 0.058739
+[dim=3] time: 0.100974
+[dim=4] time: 0.138771
+[dim=5] time: 0.172312
+[dim=6] time: 0.200966
+[dim=7] time: 0.232242
+[dim=8] time: 0.268731
+[dim=9] time: 0.293811
+[dim=10] time: 0.318177
+[dim=11] time: 0.344757
+[dim=12] time: 0.370197
+[dim=13] time: 0.395959
+[dim=14] time: 0.419312
+[dim=15] time: 0.447247
+[dim=16] time: 0.470874
+[dim=17] time: 0.494717
+[dim=18] time: 0.511299
+[dim=19] time: 0.527432
+[dim=20] time: 0.543911
+[dim=21] time: 0.560408
+[dim=22] time: 0.576074
+[dim=23] time: 0.591333
+[dim=24] Time of forward = 0.605773sec.
+AIC: 533.215
+k: 23
+
+[dim=41] time: 0.151504
+[dim=40] time: 0.197859
+[dim=39] time: 0.246801
+[dim=38] time: 0.301297
+[dim=37] time: 0.34908
+[dim=36] time: 0.398946
+[dim=35] time: 0.453507
+[dim=34] time: 0.505323
+[dim=33] time: 0.550531
+[dim=32] time: 0.592011
+[dim=31] time: 0.633471
+[dim=30] time: 0.676589
+[dim=29] time: 0.714719
+[dim=28] time: 0.7485
+[dim=27] time: 0.789444
+[dim=26] time: 0.81828
+[dim=25] time: 0.847076
+[dim=24] time: 0.873214
+[dim=23] time: 0.895936
+[dim=22] time: 0.918658
+[dim=21] Time of backward = 0.942455sec.
+AIC: 532.985
+k: 22

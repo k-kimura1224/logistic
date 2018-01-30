@@ -1,0 +1,56 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/breast/9/1_sample_breast.logreg>
+============
+
+File name	:	../../Split_data/output/breast/9/1_sample_breast.logreg
+Problem name 	:	1_sample_breast
+Number of data	:	155
+Number of var	:	33
+The given data has linear independence
+
+[dim=1] time: 0.008647
+[dim=2] time: 0.013289
+[dim=3] time: 0.017432
+[dim=4] time: 0.021574
+[dim=5] time: 0.02535
+[dim=6] time: 0.029451
+[dim=7] time: 0.033187
+[dim=8] time: 0.036533
+[dim=9] time: 0.040061
+[dim=10] time: 0.046246
+[dim=11] time: 0.05258
+[dim=12] time: 0.056154
+[dim=13] time: 0.059223
+[dim=14] time: 0.062692
+[dim=15] Time of forward = 0.065554sec.
+AIC: 139.695
+k: 14
+
+[dim=33] time: 0.013588
+[dim=32] time: 0.025369
+[dim=31] time: 0.035918
+[dim=30] time: 0.047847
+[dim=29] time: 0.058116
+[dim=28] time: 0.065675
+[dim=27] time: 0.073677
+[dim=26] time: 0.082955
+[dim=25] time: 0.094461
+[dim=24] time: 0.101532
+[dim=23] time: 0.107692
+[dim=22] time: 0.112834
+[dim=21] time: 0.117404
+[dim=20] time: 0.123065
+[dim=19] time: 0.127706
+[dim=18] Time of backward = 0.13248sec.
+AIC: 122.492
+k: 19

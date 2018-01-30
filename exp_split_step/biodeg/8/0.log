@@ -1,0 +1,65 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/biodeg/8/0_sample_biodeg.logreg>
+============
+
+File name	:	../../Split_data/output/biodeg/8/0_sample_biodeg.logreg
+Problem name 	:	0_sample_biodeg
+Number of data	:	844
+Number of var	:	41
+The given data has linear independence
+
+[dim=1] time: 0.032511
+[dim=2] time: 0.062847
+[dim=3] time: 0.107295
+[dim=4] time: 0.140466
+[dim=5] time: 0.17124
+[dim=6] time: 0.199043
+[dim=7] time: 0.229787
+[dim=8] time: 0.25695
+[dim=9] time: 0.284088
+[dim=10] time: 0.311574
+[dim=11] time: 0.339009
+[dim=12] time: 0.363898
+[dim=13] time: 0.388819
+[dim=14] time: 0.40651
+[dim=15] time: 0.425836
+[dim=16] time: 0.444582
+[dim=17] time: 0.462428
+[dim=18] time: 0.480002
+[dim=19] time: 0.4987
+[dim=20] time: 0.517899
+[dim=21] time: 0.537726
+[dim=22] time: 0.557119
+[dim=23] Time of forward = 0.574773sec.
+AIC: 528.66
+k: 22
+
+[dim=41] time: 0.14492
+[dim=40] time: 0.183749
+[dim=39] time: 0.237686
+[dim=38] time: 0.285342
+[dim=37] time: 0.361018
+[dim=36] time: 0.414119
+[dim=35] time: 0.462197
+[dim=34] time: 0.504866
+[dim=33] time: 0.544587
+[dim=32] time: 0.583484
+[dim=31] time: 0.626431
+[dim=30] time: 0.662377
+[dim=29] time: 0.697501
+[dim=28] time: 0.732052
+[dim=27] time: 0.778178
+[dim=26] time: 0.808487
+[dim=25] Time of backward = 0.836157sec.
+AIC: 526.344
+k: 26

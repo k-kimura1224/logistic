@@ -1,0 +1,73 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/statG/0/2_sample_statG.logreg>
+============
+
+File name	:	../../Split_data/output/statG/0/2_sample_statG.logreg
+Problem name 	:	2_sample_statG
+Number of data	:	800
+Number of var	:	61
+The given data has linear dependence
+13 sets of column vector are linearly dependent:
+
+[dim=1] time: 0.034232
+[dim=2] time: 0.074678
+[dim=3] time: 0.117589
+[dim=4] time: 0.156666
+[dim=5] time: 0.201365
+[dim=6] time: 0.241842
+[dim=7] time: 0.283524
+[dim=8] time: 0.326793
+[dim=9] time: 0.371921
+[dim=10] time: 0.414582
+[dim=11] time: 0.457784
+[dim=12] time: 0.500123
+[dim=13] time: 0.539744
+[dim=14] time: 0.581476
+[dim=15] time: 0.6322
+[dim=16] time: 0.670588
+[dim=17] time: 0.714017
+[dim=18] time: 0.755036
+[dim=19] time: 0.792745
+[dim=20] time: 0.830273
+[dim=21] time: 0.865961
+[dim=22] time: 0.900768
+[dim=23] Time of forward = 0.935105sec.
+AIC: 768.38
+k: 22
+
+[dim=48] time: 0.105875
+[dim=47] time: 0.214793
+[dim=46] time: 0.293003
+[dim=45] time: 0.360351
+[dim=44] time: 0.454936
+[dim=43] time: 0.511855
+[dim=42] time: 0.583878
+[dim=41] time: 0.646039
+[dim=40] time: 0.701523
+[dim=39] time: 0.764733
+[dim=38] time: 0.819684
+[dim=37] time: 0.870803
+[dim=36] time: 0.917127
+[dim=35] time: 0.961227
+[dim=34] time: 1.00156
+[dim=33] time: 1.05575
+[dim=32] time: 1.10052
+[dim=31] time: 1.14065
+[dim=30] time: 1.17898
+[dim=29] time: 1.21582
+[dim=28] time: 1.24707
+[dim=27] time: 1.29661
+[dim=26] time: 1.32956
+[dim=25] Time of backward = 1.36232sec.
+AIC: 774.622
+k: 26

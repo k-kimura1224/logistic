@@ -1,0 +1,42 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/statH/5/0_sample_statH.logreg>
+============
+
+File name	:	../../Split_data/output/statH/5/0_sample_statH.logreg
+Problem name 	:	0_sample_statH
+Number of data	:	216
+Number of var	:	25
+The given data has linear dependence
+7 sets of column vector are linearly dependent:
+{ 3 4}, { 5 6 7 8}, { 11 12}, { 13 14 15}, { 17 18}, { 20 21 22}, { 24 25 26}, 
+
+[dim=1] time: 0.00444
+[dim=2] time: 0.010457
+[dim=3] time: 0.016235
+[dim=4] time: 0.021723
+[dim=5] time: 0.026393
+[dim=6] time: 0.030186
+[dim=7] time: 0.035643
+[dim=8] Time of forward = 0.040225sec.
+AIC: 160.093
+k: 7
+
+[dim=18] time: 0.005475
+[dim=17] time: 0.009383
+[dim=16] time: 0.014144
+[dim=15] time: 0.019318
+[dim=14] time: 0.022982
+[dim=13] time: 0.026366
+[dim=12] Time of backward = 0.029495sec.
+AIC: 163.184
+k: 13

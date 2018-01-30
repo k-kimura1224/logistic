@@ -16,7 +16,11 @@ run()
    cd ..
 }
 
-#run breast
-#run biodeg
+run breast
+run biodeg
 #run musk2
+run parkin
+run seismic-bumps
 run spectf
+run statG
+run statH

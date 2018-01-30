@@ -21,4 +21,7 @@ run()
 rm -f *.sol
 rm -f *.log
 
-run madelon_train
+run biodeg
+run breast
+run parkin
+run statH

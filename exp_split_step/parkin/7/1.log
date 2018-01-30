@@ -1,0 +1,50 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/parkin/7/1_sample_parkin.logreg>
+============
+
+File name	:	../../Split_data/output/parkin/7/1_sample_parkin.logreg
+Problem name 	:	1_sample_parkin
+Number of data	:	156
+Number of var	:	22
+The given data has linear independence
+
+[dim=1] time: 0.003105
+[dim=2] time: 0.007359
+[dim=3] time: 0.01252
+[dim=4] time: 0.017387
+[dim=5] time: 0.02071
+[dim=6] time: 0.02325
+[dim=7] time: 0.02547
+[dim=8] time: 0.027549
+[dim=9] Time of forward = 0.030427sec.
+AIC: 105.45
+k: 8
+
+[dim=22] time: 0.036749
+[dim=21] time: 0.04093
+[dim=20] time: 0.210611
+[dim=19] time: 0.222629
+[dim=18] time: 0.233246
+[dim=17] time: 0.242591
+[dim=16] time: 0.245073
+[dim=15] time: 0.247694
+[dim=14] time: 0.250417
+[dim=13] time: 0.252923
+[dim=12] time: 0.254604
+[dim=11] time: 0.256763
+[dim=10] time: 0.258593
+[dim=9] time: 0.260381
+[dim=8] time: 0.261693
+[dim=7] Time of backward = 0.26294sec.
+AIC: 104.542
+k: 8

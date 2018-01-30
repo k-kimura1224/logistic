@@ -1,0 +1,48 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/seismic-bumps/8/3_sample_seismic-bumps.logreg>
+============
+
+File name	:	../../Split_data/output/seismic-bumps/8/3_sample_seismic-bumps.logreg
+Problem name 	:	3_sample_seismic-bumps
+Number of data	:	2067
+Number of var	:	21
+The given data has linear dependence
+4 sets of column vector are linearly dependent:
+{ 2 3}, { 4 5 6}, { 7 8}, { 13 14 15}, 
+
+[dim=1] time: 0.034331
+[dim=2] time: 0.068191
+[dim=3] time: 0.102443
+[dim=4] time: 0.135677
+[dim=5] time: 0.166273
+[dim=6] time: 0.195643
+[dim=7] time: 0.224444
+[dim=8] time: 0.255788
+[dim=9] Time of forward = 0.271792sec.
+AIC: 909.625
+k: 8
+
+[dim=17] time: 0.073153
+[dim=16] time: 0.104479
+[dim=15] time: 0.122082
+[dim=14] time: 0.142717
+[dim=13] time: 0.170979
+[dim=12] time: 0.197745
+[dim=11] time: 0.215656
+[dim=10] time: 0.233486
+[dim=9] time: 0.273242
+[dim=8] time: 0.302895
+[dim=7] time: 0.319882
+[dim=6] Time of backward = 0.330921sec.
+AIC: 909.805
+k: 7

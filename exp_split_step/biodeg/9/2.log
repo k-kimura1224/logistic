@@ -1,0 +1,66 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline EditLine w  GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.5           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.2            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/biodeg/9/2_sample_biodeg.logreg>
+============
+
+File name	:	../../Split_data/output/biodeg/9/2_sample_biodeg.logreg
+Problem name 	:	2_sample_biodeg
+Number of data	:	844
+Number of var	:	41
+The given data has linear independence
+
+[dim=1] time: 0.038131
+[dim=2] time: 0.07102
+[dim=3] time: 0.114514
+[dim=4] time: 0.145309
+[dim=5] time: 0.18022
+[dim=6] time: 0.208794
+[dim=7] time: 0.236068
+[dim=8] time: 0.264439
+[dim=9] time: 0.293034
+[dim=10] time: 0.319668
+[dim=11] time: 0.346533
+[dim=12] time: 0.372356
+[dim=13] time: 0.398799
+[dim=14] time: 0.427216
+[dim=15] time: 0.459653
+[dim=16] time: 0.483257
+[dim=17] time: 0.507563
+[dim=18] time: 0.524632
+[dim=19] time: 0.541483
+[dim=20] time: 0.560217
+[dim=21] time: 0.576985
+[dim=22] time: 0.593604
+[dim=23] time: 0.609774
+[dim=24] time: 0.629194
+[dim=25] Time of forward = 0.657079sec.
+AIC: 503.75
+k: 24
+
+[dim=41] time: 0.174108
+[dim=40] time: 0.23727
+[dim=39] time: 0.284614
+[dim=38] time: 0.339245
+[dim=37] time: 0.399596
+[dim=36] time: 0.453007
+[dim=35] time: 0.502106
+[dim=34] time: 0.553645
+[dim=33] time: 0.615248
+[dim=32] time: 0.665988
+[dim=31] time: 0.712323
+[dim=30] time: 0.749413
+[dim=29] time: 0.791849
+[dim=28] time: 0.835138
+[dim=27] time: 0.878738
+[dim=26] Time of backward = 0.918969sec.
+AIC: 497.87
+k: 27

@@ -26,25 +26,22 @@ run()
    echo "Specificity: $ave_spec"
 }
 
-echo "-- breast ---------"
-run para_1/breast
-run para_2/breast
-run para_3/breast
+print_result()
+{
+   name=$1
 
-echo ""
-echo "-- biodeg ---------"
-run para_1/biodeg
-run para_2/biodeg
-run para_3/biodeg
+   echo "-- $name ---------"
+   run para_1/$name
+   run para_2/$name
+   run para_3/$name
+   echo ""
+}
 
-echo ""
-echo "-- musk2 ---------"
-run para_1/musk2
-run para_2/musk2
-run para_3/musk2
-
-echo ""
-echo "-- spectf ---------"
-run para_1/spectf
-run para_2/spectf
-run para_3/spectf
+print_result breast
+print_result biodeg
+print_result musk2
+print_result parkin
+print_result seismic-bumps
+print_result spectf
+print_result statG
+print_result statH

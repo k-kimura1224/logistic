@@ -1,0 +1,88 @@
+-- breast ---------
+** dir = para_1/breast **********************
+Sensitivity: .60788088000000000000
+Specificity: .79471502000000000000
+** dir = para_2/breast **********************
+Sensitivity: .58961106000000000000
+Specificity: .79569134000000000000
+** dir = para_3/breast **********************
+Sensitivity: .51983716000000000000
+Specificity: .84407884000000000000
+
+-- biodeg ---------
+** dir = para_1/biodeg **********************
+Sensitivity: .84636616000000000000
+Specificity: .85049008000000000000
+** dir = para_2/biodeg **********************
+Sensitivity: .83656754000000000000
+Specificity: .85796036000000000000
+** dir = para_3/biodeg **********************
+Sensitivity: .79365824000000000000
+Specificity: .89552334000000000000
+
+-- musk2 ---------
+** dir = para_1/musk2 **********************
+Sensitivity: .89909010000000000000
+Specificity: .92454392000000000000
+** dir = para_2/musk2 **********************
+Sensitivity: .88949802000000000000
+Specificity: .93093960000000000000
+** dir = para_3/musk2 **********************
+Sensitivity: .79913514000000000000
+Specificity: .97616846000000000000
+
+-- parkin ---------
+** dir = para_1/parkin **********************
+Sensitivity: .82706244000000000000
+Specificity: .74076962000000000000
+** dir = para_2/parkin **********************
+Sensitivity: .80548986000000000000
+Specificity: .74868926000000000000
+** dir = para_3/parkin **********************
+Sensitivity: .88755118000000000000
+Specificity: .68879936000000000000
+
+-- seismic-bumps ---------
+** dir = para_1/seismic-bumps **********************
+Sensitivity: .67527288000000000000
+Specificity: .70252952000000000000
+** dir = para_2/seismic-bumps **********************
+Sensitivity: .58911982000000000000
+Specificity: .79855640000000000000
+** dir = para_3/seismic-bumps **********************
+Sensitivity: .01719766000000000000
+Specificity: .99469968000000000000
+
+-- spectf ---------
+** dir = para_1/spectf **********************
+Sensitivity: .80498222000000000000
+Specificity: .57548604000000000000
+** dir = para_2/spectf **********************
+Sensitivity: .79278462000000000000
+Specificity: .58708510000000000000
+** dir = para_3/spectf **********************
+Sensitivity: .85915366000000000000
+Specificity: .44141540000000000000
+
+-- statG ---------
+** dir = para_1/statG **********************
+Sensitivity: .73221764000000000000
+Specificity: .68981722000000000000
+** dir = para_2/statG **********************
+Sensitivity: .71905434000000000000
+Specificity: .69687998000000000000
+** dir = para_3/statG **********************
+Sensitivity: .86486526000000000000
+Specificity: .49066402000000000000
+
+-- statH ---------
+** dir = para_1/statH **********************
+Sensitivity: .82451786000000000000
+Specificity: .80593300000000000000
+** dir = para_2/statH **********************
+Sensitivity: .82825372000000000000
+Specificity: .79969888000000000000
+** dir = para_3/statH **********************
+Sensitivity: .85978040000000000000
+Specificity: .77643748000000000000
+
