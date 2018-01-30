@@ -36,3 +36,9 @@ echo "-- biodeg ---------"
 run para_1/biodeg
 run para_2/biodeg
 run para_3/biodeg
+
+echo ""
+echo "-- musk2 ---------"
+run para_1/musk2
+run para_2/musk2
+run para_3/musk2

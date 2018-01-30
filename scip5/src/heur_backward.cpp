@@ -25,7 +25,7 @@
 #define HEUR_NAME             "backward"
 #define HEUR_DESC             "primal heuristic using the backward selection"
 #define HEUR_DISPCHAR         'b'
-#define HEUR_PRIORITY         1000
+#define HEUR_PRIORITY         10000
 #define HEUR_FREQ             1
 #define HEUR_FREQOFS          0
 #define HEUR_MAXDEPTH         10

@@ -25,7 +25,7 @@
 #define HEUR_NAME             "forward"
 #define HEUR_DESC             "primal heuristic using the forward selection"
 #define HEUR_DISPCHAR         'f'
-#define HEUR_PRIORITY         1000
+#define HEUR_PRIORITY         10000
 #define HEUR_FREQ             1
 #define HEUR_FREQOFS          0
 #define HEUR_MAXDEPTH         10
