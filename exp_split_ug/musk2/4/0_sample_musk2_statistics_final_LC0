@@ -1,0 +1,30 @@
+######### Solver Rank = 3 is interrupted. #########
+#=== Elapsed time to terminate this Solver = 2032.23
+#=== Total computing time = 1403.47
+#=== Total idle time = 628.76
+#=== ( Idle time to start first ParaNode = 223.29, Idle time between ParaNods = 366.12, Idle Time after last ParaNode = 26.35 )
+#=== ( Idle time to wait notification Id messages = 13 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 1066.4 ( Mean = 355.467, Min = 215.38, Max = 556.69 )
+#=== The number of ParaNodes received in this solver = 3
+#=== The number of ParaNodes sent from this solver = 4
+#=== The number of nodes solved in this solver = 1703 ( / Subtree : Mean = 567, Min = 3, Max = 1697 )
+#=== Total number of restarts in this solver = 3( / Subtree : Mean = 1, Min = 1, Max = 1 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 3
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 0
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### The number of nodes solved in all solvers: 34 #########
+######### LoadCoordinator Rank = 0 is terminated. #########
+#=== The number of ParaNodes received = 29
+#=== The number of ParaNodes sent = 28
+#=== ( # sent back immediately = 0, # failed to send back = 12 )
+#=== ( # sent back immediately ( another node ) = 0, # failed to send back ( another node ) = 0 )
+#=== The number of ParaNodes deleted in LoadCoordinator = 0 ( by merging: 0 )
+#=== Maximum usage of node pool = 18, initial p = 1, maximum multiplier = 1
+#=== LoadCoodibator NodePool is not empty. 18 nodes remained.
+#=== Idle time to terminate this LoadCoordinator  = 2009.41
+#=== Elapsed time to terminate this LoadCoordinator  = 2124.38
+#=== Time used for merging nodes: add = 0, gen. = 0, regen. = 0, merge = 0
