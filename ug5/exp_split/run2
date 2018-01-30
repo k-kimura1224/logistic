@@ -15,7 +15,7 @@ run1()
       mkdir ${name}/${i}
       for j in `seq 0 4`
       do
-	      export OMP_NUMTHREADS=1
+	      export OMP_NUM_THREADS=1
 	      ../bin/fscip ../settings/default_short.set ../../Split_data/output/${name}/${i}/${j}_sample_${name}.logreg -q -sth ${num} > ./${j}.log
       done
       mv *.prm *.sol *.status *_LC0 *.log ${name}/${i}
@@ -36,7 +36,7 @@ run2()
       mkdir ${name}/${i}
       for j in `seq 0 4`
       do
-	      export OMP_NUMTHREADS=1
+	      export OMP_NUM_THREADS=1
 	      ../bin/fscip ../settings/medium_short.set ../../Split_data/output/${name}/${i}/${j}_sample_${name}.logreg -q -sth ${num} > ./${j}.log
       done
       mv *.prm *.sol *.status *_LC0 *.log ${name}/${i}
@@ -57,7 +57,7 @@ run3()
       mkdir ${name}/${i}
       for j in `seq 0 4`
       do
-	      export OMP_NUMTHREADS=1
+	      export OMP_NUM_THREADS=1
 	      ../bin/fscip ../settings/large_short.set ../../Split_data/output/${name}/${i}/${j}_sample_${name}.logreg -q -sth ${num} > ./${j}.log
       done
       mv *.prm *.sol *.status *_LC0 *.log ${name}/${i}
@@ -75,8 +75,13 @@ rm -f *_LC0
 rm -f *.log
 
 
-#run1 ${num} breast
+run1 ${num} breast
 run1 ${num} biodeg
+run1 ${num} parkin
+run1 ${num} seismic-bumps
+run1 ${num} spectf
+run1 ${num} statG
+run1 ${num} statH
 run2 ${num} musk2
-run3 ${num} madelon_train
+#run3 ${num} madelon_train
 

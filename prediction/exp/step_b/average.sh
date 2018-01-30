@@ -42,3 +42,9 @@ echo "-- musk2 ---------"
 run para_1/musk2
 run para_2/musk2
 run para_3/musk2
+
+echo ""
+echo "-- spectf ---------"
+run para_1/spectf
+run para_2/spectf
+run para_3/spectf

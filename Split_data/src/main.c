@@ -263,9 +263,9 @@ main(int argc,char *argv[])
          {
             for( k = 0; k < p; k++ )
             {
-               fprintf(file_sample, "%d ", (int) data[j*(p+1) + k]);
+               fprintf(file_sample, "%f ", data[j*(p+1) + k]);
             }
-            fprintf(file_sample, "%d\n", (int) data[j*(p+1) + p]);
+            fprintf(file_sample, "%f\n", data[j*(p+1) + p]);
          }
       }
 
@@ -287,9 +287,9 @@ main(int argc,char *argv[])
          {
             for( k = 0; k < p; k++ )
             {
-               fprintf(file_predict, "%d ", (int) data[j*(p+1) + k]);
+               fprintf(file_predict, "%f ", data[j*(p+1) + k]);
             }
-            fprintf(file_predict, "%d\n", (int) data[j*(p+1) + p]);
+            fprintf(file_predict, "%f\n", data[j*(p+1) + p]);
          }
       }
 

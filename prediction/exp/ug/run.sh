@@ -17,7 +17,7 @@ run()
    cd ..
 }
 
-#run breast
+run breast
 #run biodeg
-run musk2
-
+#run musk2
+#run madelon_train
