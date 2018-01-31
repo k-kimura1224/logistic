@@ -18,7 +18,7 @@ run()
 
 run breast
 run biodeg
-#run musk2
+run musk2
 run parkin
 run seismic-bumps
 run spectf

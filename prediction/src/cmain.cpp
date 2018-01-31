@@ -363,9 +363,9 @@ SCIP_Real calcBound1(
    }
 
    maxmin = 0.0;
-   for( t = 1; t < 10; t++)
+   for( t = 1; t < 100; t++)
    {
-      bound = t * 0.1;
+      bound = t * 0.01;
       TP = 0;
       FP = 0;
       FN = 0;
@@ -412,58 +412,6 @@ SCIP_Real calcBound1(
          best_bound = bound;
       }
    }
-
-   SCIP_Real buf = best_bound;
-   for( t = -5; t <= 5; t++)
-   {
-      bound = buf + t * 0.02;
-      TP = 0;
-      FP = 0;
-      FN = 0;
-      TN = 0;
-
-      for( i = 0; i < n; i++ )
-      {
-         if( SCIPisEQ(scip, y[i], 1.0) )
-         {
-            if( pi[i] >= bound )
-               TP++;
-            else
-               FN++;
-         }
-         else if( SCIPisEQ(scip, y[i], 0.0) )
-         {
-            if( pi[i] <= bound )
-               TN++;
-            else
-               FP++;
-         }
-         else
-         {
-            cout << "error:" << y[i] << endl;
-            exit(1);
-         }
-      }
-
-      Sensitivity = (double)TP/(TP+FN);
-      Specificity = (double)TN/(FP+TN);
-
-      cout << "bound:\t" << bound << endl;
-      printf("Sensitivity:\t%f\n", Sensitivity);
-      printf("Specificity:\t%f\n", Specificity);
-
-      if( Sensitivity > Specificity )
-         min = Specificity;
-      else
-         min = Sensitivity;
-
-      if( min > maxmin )
-      {
-         maxmin = min;
-         best_bound = bound;
-      }
-   }
-
 
    SCIPfreeMemoryArrayNull(scip, &data);
    SCIPfreeMemoryArrayNull(scip, &y);
@@ -535,9 +483,9 @@ SCIP_Real calcBound2(
    }
 
    max = 0.0;
-   for( t = 1; t < 10; t++)
+   for( t = 1; t < 100; t++)
    {
-      bound = t * 0.1;
+      bound = t * 0.01;
       TP = 0;
       FP = 0;
       FN = 0;
@@ -581,55 +529,6 @@ SCIP_Real calcBound2(
          best_bound = bound;
       }
    }
-
-   SCIP_Real buf = best_bound;
-   for( t = -5; t <= 5; t++)
-   {
-      bound = buf + t * 0.02;
-      TP = 0;
-      FP = 0;
-      FN = 0;
-      TN = 0;
-
-      for( i = 0; i < n; i++ )
-      {
-         if( SCIPisEQ(scip, y[i], 1.0) )
-         {
-            if( pi[i] >= bound )
-               TP++;
-            else
-               FN++;
-         }
-         else if( SCIPisEQ(scip, y[i], 0.0) )
-         {
-            if( pi[i] <= bound )
-               TN++;
-            else
-               FP++;
-         }
-         else
-         {
-            cout << "error:" << y[i] << endl;
-            exit(1);
-         }
-      }
-
-      Sensitivity = (double)TP/(TP+FN);
-      Specificity = (double)TN/(FP+TN);
-
-      cout << "bound:\t" << bound << endl;
-      printf("Sensitivity:\t%f\n", Sensitivity);
-      printf("Specificity:\t%f\n", Specificity);
-
-      sum = Specificity + Sensitivity;
-
-      if( sum > max )
-      {
-         max = sum;
-         best_bound = bound;
-      }
-   }
-
 
    SCIPfreeMemoryArrayNull(scip, &data);
    SCIPfreeMemoryArrayNull(scip, &y);

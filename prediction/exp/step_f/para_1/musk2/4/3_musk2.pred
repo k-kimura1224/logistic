@@ -1,12 +1,12 @@
 TP:
 168
 FP:
-100
+96
 FN:
 18
 TN:
-1033
+1037
 Sensitivity:
 0.903226
 Specificity:
-0.911739
+0.915269

@@ -20,4 +20,4 @@ run()
 run breast
 #run biodeg
 #run musk2
-#run madelon_train
+run madelon_train
