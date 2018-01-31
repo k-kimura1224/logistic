@@ -1,0 +1,41 @@
+                               Nodes    Active                                            
+     Time          Nodes        Left   Solvers     Best Integer        Best Node       Gap     Best Node(S)    Gap(S)
+*       1              0           1         1         898.3907                -         -                -         -
+*      15              0           1         1         888.2964                -         -                -         -
+       15              0           1         1         888.2964                -         -                -         -
+       29              6           1         1         888.2964         864.3907     2.77%         864.3907      2.77%
+       35             24           3         3         888.2964         864.3907     2.77%         864.3907      2.77%
+       40            275          12         4         888.2964         864.3907     2.77%         864.3907      2.77%
+       45            334           1         1         888.2964         866.3907     2.53%         866.3907      2.53%
+*      46            334           1         1         886.5571         866.3907     2.33%         866.3907      2.33%
+Limit number of collecting mode solvers extends to 2 after 58.65 seconds.
+       59            452           7         1         886.5571         866.3907     2.33%         866.3907      2.33%
+Limit number of collecting mode solvers extends to 3 after 68.91 seconds.
+       69            469          18         1         886.5571         868.3907     2.09%         868.3907      2.09%
+Limit number of collecting mode solvers extends to 4 after 81.78 seconds.
+       82            629          22         1         886.5571         869.0581     2.01%         869.0581      2.01%
+       87            836          35         1         886.5571         870.3907     1.86%         870.3907      1.86%
+Limit number of collecting mode solvers extends to 5 after 91.81 seconds.
+       92            933          82         1         886.5571         876.3907     1.16%         876.3907      1.16%
+       97           1344          71         1         886.5571         876.6728     1.13%         876.6728      1.13%
+Limit number of collecting mode solvers extends to 6 after 101.84 seconds.
+      102           1859          64         1         886.5571         877.3885     1.04%         877.3885      1.04%
+      107           2153          74         1         886.5571         878.3914     0.93%         878.3914      0.93%
+Limit number of collecting mode solvers extends to 7 after 112.30 seconds.
+      112           2297          70         1         886.5571         878.3914     0.93%         878.3914      0.93%
+      118           2477          64         1         886.5571         878.6134     0.90%         878.6134      0.90%
+Limit number of collecting mode solvers extends to 8 after 122.34 seconds.
+      123           2920          55         1         886.5571         878.9035     0.87%         878.9035      0.87%
+      128           3484          19         1         886.5571         879.3354     0.82%         879.3354      0.82%
+      130           3717           0         0         886.5571                -         -                -
+SCIP Status        : problem is solved
+Total Time         : 130.2500
+  solving          : 130.2500
+  presolving       : 0.0354 (included in solving)
+B&B Tree           :
+  nodes (total)    : 3717
+Solution           :
+  Solutions found  : 3
+  Primal Bound     : +8.86557087249190e+02
+  Dual Bound       : +8.86557087249190e+02
+Gap                : 0.00000 %

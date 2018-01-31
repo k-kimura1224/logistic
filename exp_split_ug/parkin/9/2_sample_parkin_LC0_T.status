@@ -1,0 +1,21 @@
+                               Nodes    Active                                            
+     Time          Nodes        Left   Solvers     Best Integer        Best Node       Gap     Best Node(S)    Gap(S)
+*       1              0           1         1         100.9753                -         -                -         -
+        5             53          19        16         100.9753          80.6693    25.17%          80.6693     25.17%
+*       6            108          13        11          99.6153          82.1460    21.27%          82.1460     21.27%
+*       6            118           9         9          99.5927          82.1460    21.24%          82.1460     21.24%
+       10           4905          82         7          99.5927          83.4795    19.30%          83.4795     19.30%
+       15          11107          41         9          99.5927          86.6693    14.91%          86.6693     14.91%
+       20          13317          34        16          99.5927          90.8290     9.65%          90.8290      9.65%
+       22          13630           0         0          99.5927                -         -                -
+SCIP Status        : problem is solved
+Total Time         : 22.4300
+  solving          : 22.4300
+  presolving       : 0.0007 (included in solving)
+B&B Tree           :
+  nodes (total)    : 13630
+Solution           :
+  Solutions found  : 3
+  Primal Bound     : +9.95927063953962e+01
+  Dual Bound       : +9.95927063953962e+01
+Gap                : 0.00000 %
