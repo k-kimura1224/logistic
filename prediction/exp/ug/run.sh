@@ -17,7 +17,9 @@ run()
    cd ..
 }
 
-run breast
-#run biodeg
+run biodeg
+#run breast
 #run musk2
-run madelon_train
+#run madelon_train
+run parkin
+run seismic-bumps
