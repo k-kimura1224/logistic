@@ -354,10 +354,10 @@ NoTransferThresholdReductionRatio = 1
 SolverSettingsForInitialPresolving = ""
 
 # Solver parameter settings file name that is applied at root node solving. Empty name use default settings. [Default: ]
-SolverSettingsAtRootNode = "../settings/keiji_logreg_large.set"
+SolverSettingsAtRootNode = "../settings/noheur_logreg.set"
 
 # Solver parameter settings file name that is applied at all nodes solving except root node. Empty name use default settings. [Default: ]
-SolverSettingsExceptRootNode = "../settings/keiji_logreg_large.set"
+SolverSettingsExceptRootNode = "../settings/noheur_logreg.set"
 
 # Solver parameter settings file name that is applied at racing stage. Empty name use default settings. [Default: ]
 SolverSettingsAtRacing = ""
