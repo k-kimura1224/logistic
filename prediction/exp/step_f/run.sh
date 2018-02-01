@@ -16,11 +16,12 @@ run()
    cd ..
 }
 
-run breast
-run biodeg
-run musk2
-run parkin
-run seismic-bumps
-run spectf
-run statG
-run statH
+#run breast
+#run biodeg
+#run musk2
+#run parkin
+#run seismic-bumps
+#run spectf
+#run statG
+#run statH
+run madelon_train

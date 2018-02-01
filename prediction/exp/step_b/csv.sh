@@ -40,6 +40,7 @@ print_result()
 
 print_result breast
 print_result biodeg
+print_result madelon_train
 print_result musk2
 print_result parkin
 print_result seismic-bumps
