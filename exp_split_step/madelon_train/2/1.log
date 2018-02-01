@@ -1,0 +1,175 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline 6.3         GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.8           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.0            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/madelon_train/2/1_sample_madelon_train.logreg>
+============
+
+File name	:	../../Split_data/output/madelon_train/2/1_sample_madelon_train.logreg
+Problem name 	:	1_sample_madelon_train
+Number of data	:	1600
+Number of var	:	500
+The given data has linear independence
+
+[dim=1] time: 1.70668
+[dim=2] time: 3.46136
+[dim=3] time: 5.19905
+[dim=4] time: 6.95202
+[dim=5] time: 8.6333
+[dim=6] time: 10.3501
+[dim=7] time: 12.0541
+[dim=8] time: 13.8953
+[dim=9] time: 15.7826
+[dim=10] time: 17.6729
+[dim=11] time: 19.5708
+[dim=12] time: 21.4521
+[dim=13] time: 23.3833
+[dim=14] time: 25.1662
+[dim=15] time: 27.0843
+[dim=16] time: 28.9916
+[dim=17] time: 30.9763
+[dim=18] time: 32.9686
+[dim=19] time: 34.9588
+[dim=20] time: 36.9495
+[dim=21] time: 38.8196
+[dim=22] time: 40.7772
+[dim=23] time: 42.9156
+[dim=24] time: 45.0293
+[dim=25] time: 47.1776
+[dim=26] time: 49.1803
+[dim=27] time: 51.2792
+[dim=28] time: 53.337
+[dim=29] time: 55.5404
+[dim=30] time: 57.7465
+[dim=31] time: 60.0356
+[dim=32] time: 62.3079
+[dim=33] time: 64.5929
+[dim=34] time: 66.9541
+[dim=35] time: 69.3704
+[dim=36] time: 71.7425
+[dim=37] time: 74.1231
+[dim=38] time: 76.4395
+[dim=39] time: 78.7979
+[dim=40] time: 81.0194
+[dim=41] time: 83.4849
+[dim=42] time: 85.9462
+[dim=43] time: 88.4521
+[dim=44] time: 90.9334
+[dim=45] time: 93.4398
+[dim=46] time: 95.9937
+[dim=47] time: 98.4648
+[dim=48] time: 100.882
+[dim=49] time: 103.501
+[dim=50] time: 105.89
+[dim=51] time: 108.342
+[dim=52] time: 110.772
+[dim=53] time: 113.265
+[dim=54] time: 115.804
+[dim=55] time: 118.379
+[dim=56] time: 120.947
+[dim=57] time: 123.612
+[dim=58] time: 126.316
+[dim=59] time: 129.054
+[dim=60] time: 131.893
+[dim=61] time: 134.745
+[dim=62] time: 137.626
+[dim=63] time: 140.509
+[dim=64] time: 143.515
+[dim=65] time: 146.45
+[dim=66] time: 149.378
+[dim=67] time: 152.442
+[dim=68] time: 155.349
+[dim=69] time: 158.419
+[dim=70] time: 161.388
+[dim=71] time: 164.552
+[dim=72] time: 167.746
+[dim=73] time: 171.073
+[dim=74] time: 174.285
+[dim=75] time: 177.692
+[dim=76] time: 181.057
+[dim=77] time: 184.552
+[dim=78] time: 188.054
+[dim=79] time: 191.542
+[dim=80] time: 195.083
+[dim=81] time: 198.75
+[dim=82] time: 202.489
+[dim=83] time: 206.009
+[dim=84] time: 209.449
+[dim=85] time: 212.606
+[dim=86] time: 216.015
+[dim=87] time: 219.545
+[dim=88] time: 222.913
+[dim=89] time: 226.333
+[dim=90] time: 229.786
+[dim=91] time: 233.242
+[dim=92] time: 236.712
+[dim=93] time: 240.519
+[dim=94] time: 244.374
+[dim=95] time: 248.293
+[dim=96] time: 251.923
+[dim=97] time: 255.661
+[dim=98] time: 259.268
+[dim=99] time: 263.216
+[dim=100] time: 266.802
+[dim=101] time: 270.91
+[dim=102] time: 274.879
+[dim=103] time: 278.972
+[dim=104] time: 282.527
+[dim=105] time: 286.619
+[dim=106] time: 290.77
+[dim=107] time: 294.632
+[dim=108] time: 298.715
+[dim=109] time: 302.749
+[dim=110] time: 306.908
+[dim=111] time: 311.193
+[dim=112] time: 315.005
+[dim=113] time: 319.207
+[dim=114] time: 323.388
+[dim=115] time: 327.235
+[dim=116] Time of forward = 331.498sec.
+AIC: 1944.11
+k: 115
+
+[dim=500] time: 128.06
+[dim=499] time: 162.847
+[dim=498] time: 203.78
+[dim=497] time: 250.155
+[dim=496] time: 301.685
+[dim=495] time: 348.962
+[dim=494] time: 420.61
+[dim=493] time: 476.997
+[dim=492] time: 550.751
+[dim=491] time: 606.747
+[dim=490] time: 666.562
+[dim=489] time: 709.598
+[dim=488] time: 758.517
+[dim=487] time: 814.601
+[dim=486] time: 850.706
+[dim=485] time: 897.012
+[dim=484] time: 952.995
+[dim=483] time: 1024.45
+[dim=482] time: 1072.38
+[dim=481] time: 1134.29
+[dim=480] time: 1181.93
+[dim=479] time: 1257.42
+[dim=478] time: 1322.08
+[dim=477] time: 1397.53
+[dim=476] time: 1457.8
+[dim=475] time: 1514.81
+[dim=474] time: 1580.14
+[dim=473] time: 1632.28
+[dim=472] time: 1712.09
+[dim=471] time: 1808.33
+[dim=470] time: 1874.82
+[dim=469] time: 1985.37
+[dim=468] time: 2042.04
+Time of backward = 2042.04sec.
+AIC: 2416.94
+k: 468

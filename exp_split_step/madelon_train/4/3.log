@@ -1,0 +1,152 @@
+SCIP version 5.0.0 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: NONE] [GitHash: 3bbd232]
+Copyright (C) 2002-2017 Konrad-Zuse-Zentrum fuer Informationstechnik Berlin (ZIB)
+
+External codes: 
+  Readline 6.3         GNU library for command line editing (gnu.org/s/readline)
+  CppAD 20160000.1     Algorithmic Differentiation of C++ algorithms developed by B. Bell (www.coin-or.org/CppAD)
+  ZLIB 1.2.8           General purpose compression library by J. Gailly and M. Adler (zlib.net)
+  GMP 6.1.0            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+
+user parameter file <scip.set> not found - using default parameters
+
+read problem <../../Split_data/output/madelon_train/4/3_sample_madelon_train.logreg>
+============
+
+File name	:	../../Split_data/output/madelon_train/4/3_sample_madelon_train.logreg
+Problem name 	:	3_sample_madelon_train
+Number of data	:	1600
+Number of var	:	500
+The given data has linear independence
+
+[dim=1] time: 1.76056
+[dim=2] time: 3.58726
+[dim=3] time: 5.43887
+[dim=4] time: 7.31794
+[dim=5] time: 9.24518
+[dim=6] time: 11.1942
+[dim=7] time: 13.1826
+[dim=8] time: 15.1767
+[dim=9] time: 17.2442
+[dim=10] time: 19.3261
+[dim=11] time: 21.3399
+[dim=12] time: 23.1665
+[dim=13] time: 25.3328
+[dim=14] time: 27.4331
+[dim=15] time: 29.5546
+[dim=16] time: 31.6912
+[dim=17] time: 33.9225
+[dim=18] time: 36.1833
+[dim=19] time: 38.492
+[dim=20] time: 40.8176
+[dim=21] time: 43.155
+[dim=22] time: 45.5664
+[dim=23] time: 47.9917
+[dim=24] time: 50.4495
+[dim=25] time: 52.8433
+[dim=26] time: 55.2907
+[dim=27] time: 57.7841
+[dim=28] time: 60.2521
+[dim=29] time: 62.6441
+[dim=30] time: 65.0849
+[dim=31] time: 67.657
+[dim=32] time: 70.264
+[dim=33] time: 72.8233
+[dim=34] time: 75.35
+[dim=35] time: 77.8805
+[dim=36] time: 80.7828
+[dim=37] time: 83.8185
+[dim=38] time: 86.8067
+[dim=39] time: 89.8434
+[dim=40] time: 92.9342
+[dim=41] time: 96.057
+[dim=42] time: 99.2608
+[dim=43] time: 102.666
+[dim=44] time: 105.926
+[dim=45] time: 109.085
+[dim=46] time: 112.223
+[dim=47] time: 115.453
+[dim=48] time: 118.823
+[dim=49] time: 122.122
+[dim=50] time: 126.198
+[dim=51] time: 129.881
+[dim=52] time: 133.734
+[dim=53] time: 137.323
+[dim=54] time: 140.226
+[dim=55] time: 142.982
+[dim=56] time: 146.131
+[dim=57] time: 149.673
+[dim=58] time: 153.603
+[dim=59] time: 158.186
+[dim=60] time: 162.273
+[dim=61] time: 165.879
+[dim=62] time: 169.224
+[dim=63] time: 172.576
+[dim=64] time: 176.219
+[dim=65] time: 180.794
+[dim=66] time: 185.08
+[dim=67] time: 189.273
+[dim=68] time: 192.809
+[dim=69] time: 196.526
+[dim=70] time: 199.885
+[dim=71] time: 205.77
+[dim=72] time: 211.636
+[dim=73] time: 217.851
+[dim=74] time: 224.261
+[dim=75] time: 230.843
+[dim=76] time: 237.35
+[dim=77] time: 243.928
+[dim=78] time: 250.232
+[dim=79] time: 256.372
+[dim=80] time: 262.328
+[dim=81] time: 268.262
+[dim=82] time: 272.542
+[dim=83] time: 278.426
+[dim=84] time: 283.482
+[dim=85] time: 288.172
+[dim=86] time: 293.899
+[dim=87] time: 299.445
+[dim=88] time: 305.009
+[dim=89] time: 311.221
+[dim=90] time: 317.284
+[dim=91] time: 322.699
+[dim=92] time: 327.966
+[dim=93] time: 333.368
+[dim=94] time: 337.994
+[dim=95] time: 342.261
+[dim=96] time: 347.738
+[dim=97] time: 353.519
+[dim=98] time: 358.651
+[dim=99] time: 363.857
+[dim=100] time: 369.224
+[dim=101] time: 374.398
+[dim=102] time: 379.684
+[dim=103] time: 385.156
+[dim=104] time: 390.837
+[dim=105] time: 396.803
+[dim=106] time: 403.952
+[dim=107] time: 410.03
+[dim=108] time: 415.446
+[dim=109] time: 421.47
+[dim=110] time: 428.071
+[dim=111] Time of forward = 435.321sec.
+AIC: 1932.12
+k: 110
+
+[dim=500] time: 317.695
+[dim=499] time: 470.764
+[dim=498] time: 620.454
+[dim=497] time: 787.696
+[dim=496] time: 832.699
+[dim=495] time: 890.048
+[dim=494] time: 1047.66
+[dim=493] time: 1211.79
+[dim=492] time: 1275.64
+[dim=491] time: 1408.65
+[dim=490] time: 1540.64
+[dim=489] time: 1713.98
+[dim=488] time: 1854.77
+[dim=487] time: 1955.81
+[dim=486] time: 2130.94
+Time of backward = 2130.94sec.
+AIC: 2440.82
+k: 486
