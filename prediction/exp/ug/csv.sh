@@ -41,10 +41,10 @@ print_result()
 }
 
 print_result breast
-#print_result biodeg
+print_result biodeg
 #print_result musk2
-#print_result parkin
-#print_result seismic-bumps
+print_result parkin
+print_result seismic-bumps
 #print_result spectf
 #print_result statG
 #print_result statH
