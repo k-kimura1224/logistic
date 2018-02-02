@@ -1,0 +1,18 @@
+                               Nodes    Active                                            
+     Time          Nodes        Left   Solvers     Best Integer        Best Node       Gap     Best Node(S)    Gap(S)
+*       6              0           1         1        3062.1519                -         -                -         -
+        6              0           1         1        3062.1519                -         -                -         -
+     5004              0           1         1        3062.1519                -         -                -         -
+*   13758              0           1         1        2502.6234                -         -                -         -
+    13758              0           1         1        2502.6234                -         -                -         -
+SCIP Status        : solving was interrupted [ hard time limit reached ]
+Total Time         : 13758.4700
+  solving          : 13758.4700
+  presolving       : 0.1045 (included in solving)
+B&B Tree           :
+  nodes (total)    : 1
+Solution           :
+  Solutions found  : 2
+  Primal Bound     : +2.50262344114172e+03
+  Dual Bound       :          -
+Gap                :   infinite
