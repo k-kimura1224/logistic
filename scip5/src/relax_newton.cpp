@@ -28,7 +28,7 @@
 #define RELAX_INCLUDESLP       TRUE
 
 #define debug                 0
-#define MP_WARM               true
+#define MP_WARM               false
 
 
 using namespace std;

@@ -8,8 +8,8 @@ run1()
 	export OMP_NUM_THREADS=1
 	#../bin/fscip ../settings/default.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
 	#../bin/fscip ../settings/large.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
-	#../bin/fscip ../settings/medium.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
-	../bin/fscip ../settings/medium_nobranch.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+	../bin/fscip ../settings/medium.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+	#../bin/fscip ../settings/medium_nobranch.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
 	#../bin/fscip ../settings/noheur.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
 	#../bin/fscip ../settings/nobranch.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
    #grep "Total Time" ${name}_LC0_T.status
@@ -26,7 +26,8 @@ run2()
 	export OMP_NUM_THREADS=1
 	#../bin/fscip ../settings/default.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
 	#../bin/fscip ../settings/noheur.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
-	../bin/fscip ../settings/large_nobranch.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+	#../bin/fscip ../settings/large_nobranch.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
+	../bin/fscip ../settings/large.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
 	#../bin/fscip ../settings/nobranch.set ../../data/${name}.logreg -q -sth ${num} > ./${name}.log
    #grep "Total Time" ${name}_LC0_T.status
    #grep "Primal Bound" ${name}_LC0_T.status
@@ -45,7 +46,7 @@ rm -f *.status
 rm -f *_LC0
 rm -f *.log
 
-#run1 ${num} musk2
+run1 ${num} musk2
 run2 ${num} madelon_train
 #run2 ${num} musk2
 #run2 ${num} madelon_train

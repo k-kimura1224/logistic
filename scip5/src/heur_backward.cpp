@@ -34,7 +34,7 @@
 #define HEUR_USESSUBSCIP      FALSE  /**< does the heuristic use a secondary SCIP instance? */
 
 #define debug                 0
-#define MP_WARM               true
+#define MP_WARM               false
 
 using namespace std;
 /*
