@@ -47,7 +47,7 @@ rm -f *_LC0
 rm -f *.log
 
 run1 ${num} musk2
-run2 ${num} madelon_train
+#run2 ${num} madelon_train
 #run2 ${num} musk2
 #run2 ${num} madelon_train
 
