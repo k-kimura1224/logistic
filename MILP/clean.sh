@@ -1,1 +1,1 @@
-rm -f *.log *.lp
+rm -f *.log *.lp *.sol

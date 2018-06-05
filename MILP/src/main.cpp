@@ -598,9 +598,208 @@ void boundary(
       cout << "z_" << j << endl;
 }
 
+static
+void getProblemName(
+	const char*	filename,	/*	input filename			  */
+	char*			probname,	/*	output problemname	  */
+	int			maxSize		/* maximum size of p.name */
+	)
+{
+	int	i=0;
+	int	j=0;
+	int	l;
+
+	/*	first find end of string */
+	while( filename[i]!=0 )
+		++i;
+	l = i;
+
+	/* go back until '.' or '/' or '\' appears */
+	while( (i>0) && (filename[i]!='.') && (filename[i]!='/') && (filename[i]!='\\'))
+		--i;
+
+	/* if we found '.', search for '/' or '\\' */
+	if( filename[i]=='.' ){
+		l = i;
+		while( (i>0) && (filename[i]!='/') && (filename[i]!='\\') )
+			--i;
+	}
+
+	/* crrect counter */
+	if( (filename[i]=='/') || (filename[i]=='\\') )
+		++i;
+
+	/* copy name */
+	while( (i<l) && (filename[i]!=0) ){
+		probname[j++] = filename[i++];
+		if( j>maxSize-1)
+         exit(0);
+	}
+	probname[j] = 0;
+
+}
+double read_swsolution(
+   const char            *filename,          /**< name of the input file */
+   int      n,
+   int      p,
+   bool*    y,
+   double*  X,
+   POINT*   v,
+   int      k,
+   double   obj
+   )
+{
+   vector<double> val( p+1, 0 );
+   vector<int> check( p+1, 0 );
+   vector<double> t( n );
+
+   ifstream ifs(filename);
+   string str;
+   if (ifs.fail())
+   {
+      cerr << "失敗" << std::endl;
+      exit(0);
+   }
+   while (getline(ifs, str))
+   {
+      if ( str.find("b") != 0 )
+         continue;
+      if ( str.find("x") == 1 )
+         continue;
+
+      string s_index;
+      for( auto i = 0; i < str.find(" "); i++ )
+         s_index.push_back( str[i] );
+
+      string s_val;
+      for( auto i = str.find(" "); i < str.rfind(" "); i++ )
+      {
+         string buf;
+         buf.push_back( str[i] );
+         if ( buf != " " )
+            s_val.push_back( str[i] );
+      }
+
+      //cout << "[" << s_index;
+      //cout << ":" << s_val << "]" << endl;
+      //cout << s_index << endl;
+      s_index.erase(s_index.begin());
+      //cout << s_index << endl;
+      int index = stoi( s_index );
+      assert( index >= 0 && index <= p );
+      assert( check[index] == 0 );
+
+      val[index] = stod( s_val );
+      check[index] = 1;
+   }
+
+   //for ( auto x : val )
+   //   cout << x << endl;
+
+   for ( auto i = 0; i < n; i++ )
+   {
+      POINT point;
+      double a;
+      double b;
+      double d;
+      double max = - 1.0e+10;
+      double bx = val[0];
+
+      for ( auto j = 1; j < p + 1; j++ )
+         bx += val[j] * X[i*p + j];
+
+      for ( auto s = 0; s < k; s++ )
+      {
+         point = v[s];
+         a = point.get_a();
+         b = point.get_b();
+
+        if( y[i] == true )
+            d = a;
+         else
+            d = - a;
+         double buf = d * bx + b;
+
+         if ( max < buf )
+            max = buf;
+      }
+      t[i] = max;
+   }
+
+   //for ( auto x : t )
+   //  cout << x << endl;
+
+   double objval = 0.0;
+   for ( auto x : t )
+      objval += 2.0 * x;
+   for ( auto x : check )
+      objval += 2.0 * x;
+
+   assert( objval > 0.0 );
+
+   if ( obj > objval )
+   {
+      ofstream solfile;
+      const int M = 100;
+      char problemname[M];
+      getProblemName( filename, problemname, M );
+      string solname( problemname );
+      solname.pop_back();
+      solname.pop_back();
+      string s_buf;
+
+      if( k == 9 )
+         s_buf = "_09_init.sol";
+      else if ( k == 17 )
+         s_buf = "_17_init.sol";
+      else
+         s_buf = "_init.sol";
+
+      solname += s_buf;
+
+      solfile << setprecision(10);
+      solfile.open( solname, std::ios::out );
+
+      solfile << "<CPLEXSolution version=\"1.2\">" << endl;
+      solfile << " <header" << endl;
+      solfile << "  objectiveValue=\""<< objval << "\"/>" << endl;
+
+      solfile << " <variables>" << endl;
+
+      //solfile << "objective value: " << objval << endl;
+
+      for ( auto i = 0; i < p + 1; i++ )
+      {
+         solfile << "  <variable name =\"z_" << i << "\" value=\"" << check[i] << "\"/>" << endl;
+      }
+      for ( auto i = 0; i < p + 1; i++ )
+      {
+         solfile << "  <variable name =\"b_" << i << "\" value=\"" << val[i] << "\"/>" << endl;
+      }
+      for ( auto i = 0; i < n; i++ )
+      {
+         if ( Equal( val[i], 0.0 ) )
+            solfile << "  <variable name =\"t_" << i+1 << "\" value=\"" << "0" << "\"/>" << endl;
+         else
+            solfile << "  <variable name =\"t_" << i+1 << "\" value=\"" << t[i] << "\"/>" << endl;
+      }
+      solfile << " </variables>" << endl;
+      solfile << "</CPLEXSolution>" << endl;
+
+   }
+   else
+   {
+      objval = obj;
+   }
+
+
+   return objval;
+}
+
 
 int main( int argc, char** argv )
 {
+   cout << setprecision(10);
    auto infinity = 1.0e+1;
    vector<POINT> points_5;
    vector<POINT> points_9;
@@ -671,7 +870,7 @@ int main( int argc, char** argv )
    bool*  explained;
    double*  explanatory;
 
-   if( argc != 3 )
+   if( argc != 5 )
    {
       cout << "Error : commandline arguments" << endl;
       return -1;
@@ -752,6 +951,29 @@ int main( int argc, char** argv )
    boundary( n, p );
 
    cout << "end" << endl;
+
+   double obj = 1.0e+10;
+   // read argv[3]
+   if ( V == 5 )
+   {
+      assert( V == (int)points_5.size() );
+      obj = read_swsolution( argv[3], n, p, explained, explanatory, &points_5[0], V , obj );
+      obj = read_swsolution( argv[4], n, p, explained, explanatory, &points_5[0], V , obj );
+   }
+   else if ( V == 9 )
+   {
+      assert( V == (int)points_9.size() );
+      obj = read_swsolution( argv[3], n, p, explained, explanatory, &points_9[0], V, obj );
+      obj = read_swsolution( argv[4], n, p, explained, explanatory, &points_9[0], V, obj );
+   }
+   else
+   {
+      assert( V == (int)points_17.size() );
+      obj = read_swsolution( argv[3], n, p, explained, explanatory, &points_17[0], V, obj );
+      obj = read_swsolution( argv[4], n, p, explained, explanatory, &points_17[0], V, obj );
+   }
+
+   //read_swsolution( argv[4] );
 
    delete[] data;
    delete[] explained;

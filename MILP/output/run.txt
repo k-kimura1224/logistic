@@ -1,0 +1,46 @@
+set timelimit 5000
+set mip tolerances mipgap 1e-10
+set threads 16
+read ./biodeg_09.lp
+opt
+write biodeg_09.sol
+read ./biodeg_17.lp
+opt
+write biodeg_17.sol
+read ./breast_09.lp
+opt
+write breast_09.sol
+read ./breast_17.lp
+opt
+write breast_17.sol
+read ./madelon_train_09.lp
+opt
+write madelon_train_09.sol
+read ./madelon_train_17.lp
+opt
+write madelon_train_17.sol
+read ./musk2_09.lp
+opt
+write musk2_09.sol
+read ./musk2_17.lp
+opt
+write musk2_17.sol
+read ./seismic-bumps_09.lp
+opt
+write seismic-bumps_09.sol
+read ./seismic-bumps_17.lp
+opt
+write seismic-bumps_17.sol
+read ./spectf_09.lp
+opt
+write spectf_09.sol
+read ./spectf_17.lp
+opt
+write spectf_17.sol
+read ./statG_09.lp
+opt
+write statG_09.sol
+read ./statG_17.lp
+opt
+write statG_17.sol
+q

@@ -18,18 +18,20 @@ MAIN		=	GENE_POINTS
 MAINFILE	=	$(BINDIR)/$(MAIN)
 
 #Mac
-CXX	=	/usr/local/bin/g++-4.9
+#CXX	=	/usr/local/bin/g++-4.9
 
 #Mac
-CXXFLAGS	=	-Wall -lblas -llapack -lpthread -fopenmp -O2
+#CXXFLAGS	=	-Wall -lblas -llapack -lpthread -fopenmp -O2
 
 #Linux
 #CXXFLAGS	=	-Wall -lopenblas -llapack -lpthread -fopenmp -O2
+#CXXFLAGS	=	-Wall -lopenblas -llapack -lpthread -fopenmp -O2 -std=c++14
+CXXFLAGS	=	-Wall -O2 -std=c++14
 
 #CXXFLAGS	+=	-DNDEBUG
 
 #Mac
-CXXFLAGS	+=	-I/usr/local/Cellar/openblas/0.2.18_2/include
+#CXXFLAGS	+=	-I/usr/local/Cellar/openblas/0.2.18_2/include
 
 #Linux
 #CXXLDFLAGS	=	-L/usr/lib64/libopenblas.so
