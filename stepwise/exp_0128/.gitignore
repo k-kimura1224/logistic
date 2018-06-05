@@ -1,5 +1,0 @@
-bin
-obj
-old
-src/cblas.h
-src/clapack.h
