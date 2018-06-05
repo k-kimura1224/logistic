@@ -5,33 +5,29 @@ generate(){
    buf=${1##*/}
    name=${buf%.*}
    txtname=$2
-   echo "read $file"
+
    echo "read $file" >> $txtname
-   echo "read ${name}_init.sol"
    echo "read ${name}_init.sol" >> $txtname
-   echo "opt"
    echo "opt" >> $txtname
-   echo "write ${name}.sol"
    echo "write ${name}.sol" >> $txtname
+   echo "" >> $txtname
 }
 
-time=5000
+time=$2
 txtname=run.txt
 dirname=$1
 
 rm -f $txtname
+
 echo "generate $txtname"
-echo "set timelimit $time"
 echo "set timelimit $time" >> $txtname
-echo "set mip tolerances mipgap 1e-10"
 echo "set mip tolerances mipgap 1e-10" >> $txtname
-echo "set threads 16"
 echo "set threads 16" >> $txtname
+echo "" >> $txtname
 
 for file in `ls ${dirname}/*.lp`
 do
    generate $file $txtname
 done
 
-echo "q"
 echo "q" >> $txtname
