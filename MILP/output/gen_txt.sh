@@ -7,6 +7,8 @@ generate(){
    txtname=$2
    echo "read $file"
    echo "read $file" >> $txtname
+   echo "read ${name}_init.sol"
+   echo "read ${name}_init.sol" >> $txtname
    echo "opt"
    echo "opt" >> $txtname
    echo "write ${name}.sol"
