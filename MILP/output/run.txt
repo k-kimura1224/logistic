@@ -1,16 +1,6 @@
-set timelimit 
+set timelimit 5000
 set mip tolerances mipgap 1e-10
 set threads 16
-
-read ./biodeg_09.lp
-read biodeg_09_init.sol
-opt
-write biodeg_09.sol
-
-read ./biodeg_17.lp
-read biodeg_17_init.sol
-opt
-write biodeg_17.sol
 
 read ./breast_09.lp
 read breast_09_init.sol
@@ -21,26 +11,6 @@ read ./breast_17.lp
 read breast_17_init.sol
 opt
 write breast_17.sol
-
-read ./madelon_train_09.lp
-read madelon_train_09_init.sol
-opt
-write madelon_train_09.sol
-
-read ./madelon_train_17.lp
-read madelon_train_17_init.sol
-opt
-write madelon_train_17.sol
-
-read ./musk2_09.lp
-read musk2_09_init.sol
-opt
-write musk2_09.sol
-
-read ./musk2_17.lp
-read musk2_17_init.sol
-opt
-write musk2_17.sol
 
 read ./seismic-bumps_09.lp
 read seismic-bumps_09_init.sol
@@ -61,6 +31,26 @@ read ./spectf_17.lp
 read spectf_17_init.sol
 opt
 write spectf_17.sol
+
+read ./biodeg_09.lp
+read biodeg_09_init.sol
+opt
+write biodeg_09.sol
+
+read ./biodeg_17.lp
+read biodeg_17_init.sol
+opt
+write biodeg_17.sol
+
+read ./musk2_09.lp
+read musk2_09_init.sol
+opt
+write musk2_09.sol
+
+read ./musk2_17.lp
+read musk2_17_init.sol
+opt
+write musk2_17.sol
 
 read ./statG_09.lp
 read statG_09_init.sol
