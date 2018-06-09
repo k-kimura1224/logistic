@@ -9,8 +9,10 @@ run()
 
 run seismic-bumps
 run breast
-#run biodeg
+run biodeg
 run spectf
 #run musk2
 #run statG
 run madelon_train
+
+echo "done!"
